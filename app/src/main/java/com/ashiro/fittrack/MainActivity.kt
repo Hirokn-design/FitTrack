@@ -50,9 +50,11 @@ import com.ashiro.fittrack.ui.theme.FitTrackTheme
 import com.ashiro.fittrack.ui.theme.SystemBackground
 import java.io.File
 import java.io.FileOutputStream
+import java.net.URLDecoder
+import java.net.URLEncoder
 
 class MainActivity : ComponentActivity(), SensorEventListener {
-    
+
     private var sensorManager: SensorManager? = null
     private var stepSensor: Sensor? = null
     private var _totalSteps = mutableIntStateOf(0)
@@ -69,18 +71,18 @@ class MainActivity : ComponentActivity(), SensorEventListener {
         stepSensor = sensorManager?.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR)
 
         setContent {
-            var themeMode by remember { 
-                mutableStateOf(sharedPreferences.getString("THEME_MODE", "System") ?: "System") 
+            var themeMode by remember {
+                sharedPreferences.getString("THEME_MODE", "System")?.let { mutableStateOf(it) } ?: mutableStateOf("System")
             }
-            
+
             val isDark = when (themeMode) {
                 "Dark" -> true
                 "Light" -> false
                 else -> isSystemInDarkTheme()
             }
 
-            var customBgPath by remember { 
-                mutableStateOf(sharedPreferences.getString("CUSTOM_BG_PATH", null)) 
+            var customBgPath by remember {
+                mutableStateOf(sharedPreferences.getString("CUSTOM_BG_PATH", null))
             }
 
             val backgroundPainter: Painter = if (customBgPath != null) {
@@ -127,7 +129,9 @@ class MainActivity : ComponentActivity(), SensorEventListener {
                 var savedName by remember { mutableStateOf(sharedPreferences.getString("USERNAME", null)) }
                 var savedSex by remember { mutableStateOf(sharedPreferences.getString("SEX", "M")) }
                 var selectedTab by remember { mutableIntStateOf(0) }
-                var activeExercise by remember { mutableStateOf<String?>(null) }
+
+                // Sauvegarde de l'état encodé de manière sécurisée pour éviter les conflits d'accents/caractères spéciaux
+                var activeExerciseEncoded by remember { mutableStateOf<String?>(null) }
 
                 // Navigation d'écran plein écran
                 var isProfileVisible by remember { mutableStateOf(false) }
@@ -185,8 +189,18 @@ class MainActivity : ComponentActivity(), SensorEventListener {
                                     savedName = profile.name
                                 })
                             }
-                            activeExercise != null -> {
-                                ExerciseTimerScreen(activityName = activeExercise!!, onFinish = { activeExercise = null })
+                            // CORRECTION DE L'AFFICHAGE : Décodage propre avant injection dans le minuteur d'exercice
+                            activeExerciseEncoded != null -> {
+                                val decodedActivityName = remember(activeExerciseEncoded) {
+                                    try {
+                                        URLDecoder.decode(activeExerciseEncoded!!, "UTF-8")
+                                    } catch (e: Exception) { "" }
+                                }
+
+                                ExerciseTimerScreen(
+                                    activityName = decodedActivityName,
+                                    onFinish = { activeExerciseEncoded = null }
+                                )
                             }
                             else -> {
                                 Scaffold(
@@ -213,7 +227,12 @@ class MainActivity : ComponentActivity(), SensorEventListener {
                                     Box(modifier = Modifier.fillMaxSize().padding(innerPadding)) {
                                         when (selectedTab) {
                                             0 -> MainDashboard(savedName!!, _totalSteps.intValue)
-                                            1 -> TrainingProgramsScreen(onStartTraining = { activeExercise = it })
+                                            // CORRECTION DE L'ACTION : Encodage sécurisé en UTF-8 pour éliminer le bug d'affichage
+                                            1 -> TrainingProgramsScreen(onStartTraining = { rawTitle ->
+                                                activeExerciseEncoded = try {
+                                                    URLEncoder.encode(rawTitle, "UTF-8")
+                                                } catch (e: Exception) { rawTitle }
+                                            })
                                             2 -> StatsScreen()
                                             3 -> NutritionScreen()
                                         }

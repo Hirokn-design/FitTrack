@@ -1,5 +1,7 @@
 package com.ashiro.fittrack.ui.screens
 
+import android.widget.Toast
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.animation.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
@@ -10,10 +12,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Male
-import androidx.compose.material.icons.filled.Female
 import androidx.compose.material.icons.filled.FitnessCenter
-//import androidx.compose.material.icons.filled.SkipNext
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -23,16 +22,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ashiro.fittrack.R
 import com.ashiro.fittrack.model.WorkoutDatabase
 import com.ashiro.fittrack.ui.components.SystemButton
 import com.ashiro.fittrack.ui.theme.CyanElectric
-import com.ashiro.fittrack.ui.theme.ManaPurple
 import kotlinx.coroutines.delay
 
 @Composable
@@ -40,24 +38,41 @@ fun ExerciseTimerScreen(
     activityName: String,
     onFinish: () -> Unit
 ) {
-    val activity = WorkoutDatabase.allActivities[activityName] ?: return
-    var currentExerciseIndex by remember { mutableIntStateOf(0) }
-    val currentExercise = activity.exercises[currentExerciseIndex]
-    
-    var timeLeft by remember { mutableIntStateOf(currentExercise.durationSeconds) }
-    var isRunning by remember { mutableStateOf(true) }
+    val context = LocalContext.current
 
-    // Reset timer when exercise changes
-    LaunchedEffect(currentExerciseIndex) {
-        timeLeft = activity.exercises[currentExerciseIndex].durationSeconds
-        isRunning = true
+    // 1. Récupération sécurisée de l'activité
+    val activity = remember(activityName) { WorkoutDatabase.allActivities[activityName] }
+
+    // Si l'activité n'est pas trouvée, on affiche une alerte visuelle au lieu de laisser un écran noir infini
+    if (activity == null) {
+        LaunchedEffect(activityName) {
+            Toast.makeText(context, "Erreur Raid : '$activityName' introuvable !", Toast.LENGTH_LONG).show()
+            onFinish()
+        }
+        return
     }
 
-    LaunchedEffect(isRunning) {
+    var currentExerciseIndex by remember { mutableIntStateOf(0) }
+
+    // Sécurité anti-crash si la liste d'exercices est vide
+    if (activity.exercises.isEmpty() || currentExerciseIndex >= activity.exercises.size) {
+        LaunchedEffect(Unit) { onFinish() }
+        return
+    }
+
+    val currentExercise = activity.exercises[currentExerciseIndex]
+
+    // 2. Gestion du temps liée à l'index de l'exercice en cours
+    var timeLeft by remember(currentExerciseIndex) { mutableIntStateOf(currentExercise.durationSeconds) }
+    var isRunning by remember { mutableStateOf(true) }
+
+    // 3. Boucle d'effet unique et isolée pour le compte à rebours
+    LaunchedEffect(currentExerciseIndex, isRunning) {
         while (isRunning && timeLeft > 0) {
             delay(1000L)
             timeLeft--
-            if (timeLeft == 0) {
+
+            if (timeLeft <= 0) {
                 if (currentExerciseIndex < activity.exercises.size - 1) {
                     currentExerciseIndex++
                 } else {
@@ -66,7 +81,6 @@ fun ExerciseTimerScreen(
             }
         }
     }
-
 
     Column(
         modifier = Modifier
@@ -110,7 +124,6 @@ fun ExerciseTimerScreen(
             contentAlignment = Alignment.Center
         ) {
             if (currentExercise.animationRes != null) {
-                // Placeholder pour l'animation (Image pour l'instant)
                 androidx.compose.foundation.Image(
                     painter = painterResource(id = currentExercise.animationRes),
                     contentDescription = null,
@@ -120,8 +133,7 @@ fun ExerciseTimerScreen(
             } else {
                 Icon(Icons.Default.FitnessCenter, contentDescription = null, tint = CyanElectric.copy(alpha = 0.3f), modifier = Modifier.size(80.dp))
             }
-            
-            // Overlay Text
+
             Box(modifier = Modifier.fillMaxSize().padding(12.dp), contentAlignment = Alignment.BottomStart) {
                 Text(
                     text = "EXERCICE ${currentExerciseIndex + 1}/${activity.exercises.size}",
@@ -147,8 +159,9 @@ fun ExerciseTimerScreen(
 
         // TIMER CIRCULAIRE
         Box(contentAlignment = Alignment.Center) {
-            val progress = timeLeft.toFloat() / currentExercise.durationSeconds.toFloat()
-            
+            val totalSeconds = if (currentExercise.durationSeconds > 0) currentExercise.durationSeconds.toFloat() else 1f
+            val progress = timeLeft.toFloat() / totalSeconds
+
             Canvas(modifier = Modifier.size(220.dp)) {
                 drawCircle(
                     color = Color.White.copy(alpha = 0.05f),
@@ -162,10 +175,10 @@ fun ExerciseTimerScreen(
                     style = Stroke(width = 12.dp.toPx(), cap = StrokeCap.Round)
                 )
             }
-            
+
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
-                    text = "${(timeLeft / 60).toString().padStart(2, '0')}:${(timeLeft % 60).toString().padStart(2, '0')}",
+                    text = String.format("%02d:%02d", timeLeft / 60, timeLeft % 60),
                     style = MaterialTheme.typography.headlineLarge.copy(
                         fontSize = 54.sp,
                         fontWeight = FontWeight.Bold,
@@ -209,7 +222,7 @@ fun ExerciseTimerScreen(
                 )
             }
         }
-        
+
         Spacer(modifier = Modifier.height(24.dp))
     }
 }
