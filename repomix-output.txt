@@ -1,0 +1,3838 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.gitignore
+app/.gitignore
+app/build.gradle.kts
+app/proguard-rules.pro
+app/src/androidTest/java/com/ashiro/fittrack/ExampleInstrumentedTest.kt
+app/src/main/AndroidManifest.xml
+app/src/main/ic_launcher-playstore.png
+app/src/main/java/com/ashiro/fittrack/MainActivity.kt
+app/src/main/java/com/ashiro/fittrack/model/WorkoutModels.kt
+app/src/main/java/com/ashiro/fittrack/SplashScreen.kt
+app/src/main/java/com/ashiro/fittrack/SystemNotificationCard.kt
+app/src/main/java/com/ashiro/fittrack/ui/components/SystemComponents.kt
+app/src/main/java/com/ashiro/fittrack/ui/screens/AboutScreen.kt
+app/src/main/java/com/ashiro/fittrack/ui/screens/ExerciseTimerScreen.kt
+app/src/main/java/com/ashiro/fittrack/ui/screens/HunterRegistrationScreen.kt
+app/src/main/java/com/ashiro/fittrack/ui/screens/MainDashboard.kt
+app/src/main/java/com/ashiro/fittrack/ui/screens/NutritionScreen.kt
+app/src/main/java/com/ashiro/fittrack/ui/screens/OnboardingScreen.kt
+app/src/main/java/com/ashiro/fittrack/ui/screens/ProfileScreen.kt
+app/src/main/java/com/ashiro/fittrack/ui/screens/StatsScreen.kt
+app/src/main/java/com/ashiro/fittrack/ui/screens/TrainingProgramsScreen.kt
+app/src/main/java/com/ashiro/fittrack/ui/theme/Color.kt
+app/src/main/java/com/ashiro/fittrack/ui/theme/Theme.kt
+app/src/main/java/com/ashiro/fittrack/ui/theme/Type.kt
+app/src/main/res/drawable/bas.webp
+app/src/main/res/drawable/bg_fem.webp
+app/src/main/res/drawable/bg_hom.webp
+app/src/main/res/drawable/bg_init.webp
+app/src/main/res/drawable/bg0.webp
+app/src/main/res/drawable/bg1.webp
+app/src/main/res/drawable/bg2.webp
+app/src/main/res/drawable/bg3.webp
+app/src/main/res/drawable/burn.webp
+app/src/main/res/drawable/e_rank.webp
+app/src/main/res/drawable/eveil_mon.webp
+app/src/main/res/drawable/gen.webp
+app/src/main/res/drawable/ic_launcher_background.xml
+app/src/main/res/drawable/ic_launcher_foreground.xml
+app/src/main/res/drawable/logo_fittrack.webp
+app/src/main/res/drawable/mobility.webp
+app/src/main/res/drawable/pos.webp
+app/src/main/res/drawable/pow.webp
+app/src/main/res/drawable/punch.webp
+app/src/main/res/drawable/raid.webp
+app/src/main/res/drawable/sculpt.webp
+app/src/main/res/drawable/speed2.webp
+app/src/main/res/drawable/stre.webp
+app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+app/src/main/res/mipmap-hdpi/ic_launcher_foreground.webp
+app/src/main/res/mipmap-hdpi/ic_launcher_round.webp
+app/src/main/res/mipmap-hdpi/ic_launcher.webp
+app/src/main/res/mipmap-mdpi/ic_launcher_foreground.webp
+app/src/main/res/mipmap-mdpi/ic_launcher_round.webp
+app/src/main/res/mipmap-mdpi/ic_launcher.webp
+app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.webp
+app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp
+app/src/main/res/mipmap-xhdpi/ic_launcher.webp
+app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.webp
+app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp
+app/src/main/res/mipmap-xxhdpi/ic_launcher.webp
+app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.webp
+app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp
+app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp
+app/src/main/res/values/colors.xml
+app/src/main/res/values/strings.xml
+app/src/main/res/values/themes.xml
+app/src/main/res/xml/backup_rules.xml
+app/src/main/res/xml/data_extraction_rules.xml
+app/src/test/java/com/ashiro/fittrack/ExampleUnitTest.kt
+build.gradle.kts
+gradle.properties
+gradle/libs.versions.toml
+gradle/wrapper/gradle-wrapper.jar
+gradle/wrapper/gradle-wrapper.properties
+gradlew
+gradlew.bat
+settings.gradle.kts
+ui/theme/Color.kt
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".gitignore">
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+</file>
+
+<file path="app/.gitignore">
+/build
+</file>
+
+<file path="app/build.gradle.kts">
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+}
+
+android {
+    namespace = "com.ashiro.fittrack"
+    compileSdk {
+        version = release(36)
+    }
+
+    defaultConfig {
+        applicationId = "com.ashiro.fittrack"
+        minSdk = 26
+        targetSdk = 36
+        versionCode = 1
+        versionName = "1.0"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+    buildFeatures {
+        compose = true
+    }
+}
+
+dependencies {
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.compose.material.icons.extended)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.graphics)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.compose.material3)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
+}
+</file>
+
+<file path="app/proguard-rules.pro">
+# Add project specific ProGuard rules here.
+# You can control the set of applied configuration files using the
+# proguardFiles setting in build.gradle.
+#
+# For more details, see
+#   http://developer.android.com/guide/developing/tools/proguard.html
+
+# If your project uses WebView with JS, uncomment the following
+# and specify the fully qualified class name to the JavaScript interface
+# class:
+#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+#   public *;
+#}
+
+# Uncomment this to preserve the line number information for
+# debugging stack traces.
+#-keepattributes SourceFile,LineNumberTable
+
+# If you keep the line number information, uncomment this to
+# hide the original source file name.
+#-renamesourcefileattribute SourceFile
+</file>
+
+<file path="app/src/androidTest/java/com/ashiro/fittrack/ExampleInstrumentedTest.kt">
+package com.ashiro.fittrack
+
+import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.ext.junit.runners.AndroidJUnit4
+
+import org.junit.Test
+import org.junit.runner.RunWith
+
+import org.junit.Assert.*
+
+/**
+ * Instrumented test, which will execute on an Android device.
+ *
+ * See [testing documentation](http://d.android.com/tools/testing).
+ */
+@RunWith(AndroidJUnit4::class)
+class ExampleInstrumentedTest {
+    @Test
+    fun useAppContext() {
+        // Context of the app under test.
+        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
+        assertEquals("com.ashiro.fittrack", appContext.packageName)
+    }
+}
+</file>
+
+<file path="app/src/main/AndroidManifest.xml">
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Autorisations pour le suivi de l'activité physique (pas) -->
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+    <!-- Autorisation pour les notifications (Android 13+) -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Autorisation pour l'activité en arrière plan-->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_HEALTH" />
+    <!-- Autorisation pour l'accès à internet-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Autorisation pour l'accès à la localisation-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMISATIONS" />
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FitTrack">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.FitTrack">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
+</file>
+
+<file path="app/src/main/java/com/ashiro/fittrack/MainActivity.kt">
+package com.ashiro.fittrack
+
+import android.Manifest
+import android.content.Context
+import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
+import android.net.Uri
+import android.os.Build
+import android.os.Bundle
+import android.widget.Toast
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.List
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.graphics.painter.BitmapPainter
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
+import androidx.core.content.edit
+import com.ashiro.fittrack.ui.screens.*
+import com.ashiro.fittrack.ui.theme.CyanElectric
+import com.ashiro.fittrack.ui.theme.FitTrackTheme
+import com.ashiro.fittrack.ui.theme.SystemBackground
+import java.io.File
+import java.io.FileOutputStream
+
+class MainActivity : ComponentActivity(), SensorEventListener {
+    
+    private var sensorManager: SensorManager? = null
+    private var stepSensor: Sensor? = null
+    private var _totalSteps = mutableIntStateOf(0)
+
+    @OptIn(ExperimentalMaterial3Api::class)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+
+        val sharedPreferences = getSharedPreferences("FitTrackPrefs", Context.MODE_PRIVATE)
+        _totalSteps.intValue = sharedPreferences.getInt("DAILY_STEPS", 0)
+
+        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        stepSensor = sensorManager?.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR)
+
+        setContent {
+            var themeMode by remember { 
+                mutableStateOf(sharedPreferences.getString("THEME_MODE", "System") ?: "System") 
+            }
+            
+            val isDark = when (themeMode) {
+                "Dark" -> true
+                "Light" -> false
+                else -> isSystemInDarkTheme()
+            }
+
+            var customBgPath by remember { 
+                mutableStateOf(sharedPreferences.getString("CUSTOM_BG_PATH", null)) 
+            }
+
+            val backgroundPainter: Painter = if (customBgPath != null) {
+                val bitmap = remember(customBgPath) {
+                    try {
+                        val file = File(customBgPath!!)
+                        if (file.exists()) {
+                            BitmapFactory.decodeFile(file.absolutePath)?.asImageBitmap()
+                        } else null
+                    } catch (e: Exception) { null }
+                }
+                if (bitmap != null) BitmapPainter(bitmap) else painterResource(id = R.drawable.bg_init)
+            } else {
+                painterResource(id = R.drawable.bg_hom)
+            }
+
+            val imagePickerLauncher = rememberLauncherForActivityResult(
+                contract = ActivityResultContracts.PickVisualMedia()
+            ) { uri ->
+                if (uri != null) {
+                    val path = saveImageToInternalStorage(uri, "custom_background.jpg")
+                    if (path != null) {
+                        customBgPath = path
+                        sharedPreferences.edit { putString("CUSTOM_BG_PATH", path) }
+                    }
+                }
+            }
+
+            FitTrackTheme(darkTheme = isDark) {
+                // Permissions
+                val permissionsToRequest = remember {
+                    val list = mutableListOf<String>()
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) list.add(Manifest.permission.ACTIVITY_RECOGNITION)
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) list.add(Manifest.permission.POST_NOTIFICATIONS)
+                    list
+                }
+                val permissionLauncher = rememberLauncherForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { _ -> }
+                LaunchedEffect(Unit) { if (permissionsToRequest.isNotEmpty()) permissionLauncher.launch(permissionsToRequest.toTypedArray()) }
+
+                var isSplashFinished by remember { mutableStateOf(false) }
+                var isOnboardingFinished by remember {
+                    mutableStateOf(sharedPreferences.getBoolean("ONBOARDING_FINISHED", false))
+                }
+                var savedName by remember { mutableStateOf(sharedPreferences.getString("USERNAME", null)) }
+                var savedSex by remember { mutableStateOf(sharedPreferences.getString("SEX", "M")) }
+                var selectedTab by remember { mutableIntStateOf(0) }
+                var activeExercise by remember { mutableStateOf<String?>(null) }
+
+                // Navigation d'écran plein écran
+                var isProfileVisible by remember { mutableStateOf(false) }
+                var isAboutVisible by remember { mutableStateOf(false) }
+                var showSettingsDialog by remember { mutableStateOf(false) }
+                var showMenu by remember { mutableStateOf(false) }
+
+                Box(modifier = Modifier.fillMaxSize()) {
+                    if (!isSplashFinished) {
+                        SplashScreen(onTimeout = { isSplashFinished = true })
+                    } else {
+                        // FOND UNIVERSEL DYNAMIQUE
+                        val currentBg: Painter = if (customBgPath != null) backgroundPainter else {
+                            val resId = when {
+                                savedName == null -> R.drawable.bg_init
+                                savedSex == "M" -> R.drawable.bg_hom
+                                else -> R.drawable.bg_fem
+                            }
+                            painterResource(id = resId)
+                        }
+
+                        Image(
+                            painter = currentBg,
+                            contentDescription = null,
+                            modifier = Modifier.fillMaxSize(),
+                            contentScale = ContentScale.Crop,
+                            colorFilter = ColorFilter.tint(Color.Black.copy(alpha = 0.35f), androidx.compose.ui.graphics.BlendMode.Darken)
+                        )
+
+                        when {
+                            !isOnboardingFinished -> {
+                                OnboardingScreen(onFinished = {
+                                    sharedPreferences.edit { putBoolean("ONBOARDING_FINISHED", true) }
+                                    isOnboardingFinished = true
+                                })
+                            }
+                            isAboutVisible -> {
+                                AboutScreen(onBack = { isAboutVisible = false })
+                            }
+                            isProfileVisible -> {
+                                ProfileScreen(onBack = { isProfileVisible = false })
+                            }
+                            savedName == null -> {
+                                HunterRegistrationScreen(onComplete = { profile ->
+                                    sharedPreferences.edit {
+                                        putString("USERNAME", profile.name)
+                                        putString("SEX", profile.sex)
+                                        putInt("AGE", profile.age)
+                                        putInt("HEIGHT", profile.height)
+                                        putInt("WEIGHT", profile.weight)
+                                        putString("GOAL", profile.goal)
+                                        putString("ACTIVITY_LEVEL", profile.activityLevel)
+                                    }
+                                    savedSex = profile.sex
+                                    savedName = profile.name
+                                })
+                            }
+                            activeExercise != null -> {
+                                ExerciseTimerScreen(activityName = activeExercise!!, onFinish = { activeExercise = null })
+                            }
+                            else -> {
+                                Scaffold(
+                                    modifier = Modifier.fillMaxSize(),
+                                    containerColor = Color.Transparent,
+                                    topBar = {
+                                        CenterAlignedTopAppBar(
+                                            title = { Text("INTERFACE SYSTEME", style = MaterialTheme.typography.labelMedium.copy(letterSpacing = 2.sp), color = CyanElectric) },
+                                            actions = {
+                                                Box {
+                                                    IconButton(onClick = { showMenu = true }) { Icon(Icons.Default.MoreVert, contentDescription = "Menu", tint = Color.White) }
+                                                    DropdownMenu(expanded = showMenu, onDismissRequest = { showMenu = false }, modifier = Modifier.background(SystemBackground.copy(alpha = 0.95f))) {
+                                                        DropdownMenuItem(text = { Text("MON PROFIL", color = Color.White) }, onClick = { showMenu = false; isProfileVisible = true }, leadingIcon = { Icon(Icons.Default.Person, contentDescription = null, tint = CyanElectric) })
+                                                        DropdownMenuItem(text = { Text("PARAMÈTRES", color = Color.White) }, onClick = { showMenu = false; showSettingsDialog = true }, leadingIcon = { Icon(Icons.Default.Settings, contentDescription = null, tint = CyanElectric) })
+                                                        DropdownMenuItem(text = { Text("À PROPOS", color = Color.White) }, onClick = { showMenu = false; isAboutVisible = true }, leadingIcon = { Icon(Icons.Default.Info, contentDescription = null, tint = CyanElectric) })
+                                                    }
+                                                }
+                                            },
+                                            colors = TopAppBarDefaults.centerAlignedTopAppBarColors(containerColor = Color.Black.copy(alpha = 0.4f))
+                                        )
+                                    },
+                                    bottomBar = { SystemBottomNavigation(selectedTab = selectedTab, onTabSelected = { selectedTab = it }) }
+                                ) { innerPadding ->
+                                    Box(modifier = Modifier.fillMaxSize().padding(innerPadding)) {
+                                        when (selectedTab) {
+                                            0 -> MainDashboard(savedName!!, _totalSteps.intValue)
+                                            1 -> TrainingProgramsScreen(onStartTraining = { activeExercise = it })
+                                            2 -> StatsScreen()
+                                            3 -> NutritionScreen()
+                                        }
+                                    }
+                                }
+                                if (showSettingsDialog) SettingsDialog(
+                                    currentTheme = themeMode,
+                                    onThemeChange = { themeMode = it; sharedPreferences.edit { putString("THEME_MODE", it) } },
+                                    onBackgroundChange = { imagePickerLauncher.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)) },
+                                    onResetBackground = { customBgPath = null; sharedPreferences.edit { remove("CUSTOM_BG_PATH") } },
+                                    hasCustomBg = customBgPath != null,
+                                    onDismiss = { showSettingsDialog = false }
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun saveImageToInternalStorage(uri: Uri, fileName: String): String? {
+        return try {
+            val inputStream = contentResolver.openInputStream(uri) ?: return null
+            val file = File(filesDir, fileName)
+            val outputStream = FileOutputStream(file)
+            inputStream.copyTo(outputStream)
+            outputStream.close()
+            inputStream.close()
+            file.absolutePath
+        } catch (e: Exception) { null }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val permission = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) ContextCompat.checkSelfPermission(this, Manifest.permission.ACTIVITY_RECOGNITION) else PackageManager.PERMISSION_GRANTED
+        if (permission == PackageManager.PERMISSION_GRANTED) stepSensor?.let { sensorManager?.registerListener(this, it, SensorManager.SENSOR_DELAY_UI) }
+    }
+    override fun onPause() {
+        super.onPause()
+        sensorManager?.unregisterListener(this)
+        getSharedPreferences("FitTrackPrefs", Context.MODE_PRIVATE).edit { putInt("DAILY_STEPS", _totalSteps.intValue) }
+    }
+    override fun onSensorChanged(event: SensorEvent?) { if (event?.sensor?.type == Sensor.TYPE_STEP_DETECTOR) _totalSteps.intValue += 1 }
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun SettingsDialog(currentTheme: String, onThemeChange: (String) -> Unit, onBackgroundChange: () -> Unit, onResetBackground: () -> Unit, hasCustomBg: Boolean, onDismiss: () -> Unit) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        confirmButton = { TextButton(onClick = onDismiss) { Text("FERMER", color = CyanElectric) } },
+        containerColor = SystemBackground.copy(alpha = 0.95f),
+        title = { Text("PARAMÈTRES", style = MaterialTheme.typography.titleMedium.copy(letterSpacing = 2.sp), color = CyanElectric) },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                Text("AFFICHAGE", style = MaterialTheme.typography.labelSmall, color = Color.Gray)
+                listOf("System" to "Système", "Light" to "Clair", "Dark" to "Sombre").forEach { (mode, label) ->
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        RadioButton(selected = currentTheme == mode, onClick = { onThemeChange(mode) }, colors = RadioButtonDefaults.colors(selectedColor = CyanElectric))
+                        Text(label, color = Color.White, modifier = Modifier.clickable { onThemeChange(mode) })
+                    }
+                }
+                HorizontalDivider(color = Color.Gray.copy(alpha = 0.3f))
+                Text("ARRIÈRE-PLAN", style = MaterialTheme.typography.labelSmall, color = Color.Gray)
+                Button(onClick = onBackgroundChange, modifier = Modifier.fillMaxWidth(), colors = ButtonDefaults.buttonColors(containerColor = CyanElectric.copy(alpha = 0.2f), contentColor = CyanElectric), shape = RoundedCornerShape(8.dp)) {
+                    Icon(Icons.Default.Face, contentDescription = null, modifier = Modifier.size(18.dp))
+                    Spacer(Modifier.width(8.dp))
+                    Text("CHANGER L'IMAGE")
+                }
+                if (hasCustomBg) {
+                    TextButton(onClick = onResetBackground, modifier = Modifier.fillMaxWidth()) { Text("RÉINITIALISER", color = Color.Red.copy(alpha = 0.7f), fontSize = 10.sp) }
+                }
+            }
+        },
+        modifier = Modifier.border(1.dp, CyanElectric.copy(alpha = 0.5f), RoundedCornerShape(28.dp))
+    )
+}
+
+@Composable
+fun SystemBottomNavigation(selectedTab: Int, onTabSelected: (Int) -> Unit) {
+    val items = listOf("Quête" to Icons.Default.CheckCircle, "Activiés" to Icons.AutoMirrored.Filled.List, "Évolution" to Icons.Default.Star, "Repas" to Icons.Default.Fastfood)
+    val menuShape = RoundedCornerShape(32.dp)
+    Box(modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 32.dp).fillMaxWidth().clip(menuShape).background(SystemBackground.copy(alpha = 0.85f)).border(1.dp, CyanElectric.copy(alpha = 0.4f), menuShape)) {
+        NavigationBar(containerColor = Color.Transparent, modifier = Modifier.height(72.dp), windowInsets = WindowInsets(0.dp, 0.dp, 0.dp, 0.dp), tonalElevation = 0.dp) {
+            items.forEachIndexed { index, (label, icon) ->
+                NavigationBarItem(
+                    selected = selectedTab == index,
+                    onClick = { onTabSelected(index) },
+                    icon = { Icon(icon, contentDescription = label) },
+                    label = { Text(label, style = MaterialTheme.typography.labelSmall) },
+                    colors = NavigationBarItemDefaults.colors(selectedIconColor = CyanElectric, selectedTextColor = CyanElectric, unselectedIconColor = Color.Gray, unselectedTextColor = Color.Gray, indicatorColor = CyanElectric.copy(alpha = 0.2f))
+                )
+            }
+        }
+    }
+}
+</file>
+
+<file path="app/src/main/java/com/ashiro/fittrack/model/WorkoutModels.kt">
+package com.ashiro.fittrack.model
+
+import com.ashiro.fittrack.R
+
+data class Exercise(
+    val name: String,
+    val durationSeconds: Int,
+    val description: String,
+    val animationRes: Int? = null
+)
+
+data class WorkoutActivity(
+    val title: String,
+    val exercises: List<Exercise>
+)
+
+object WorkoutDatabase {
+    val allActivities = mapOf(
+        "Haut du Corps Sculpté" to WorkoutActivity(
+            title = "Haut du Corps Sculpté",
+            exercises = listOf(
+                Exercise("Pompes de l'Ombre", 45, "Gardez le corps bien aligné.", R.drawable.sculpt),
+                Exercise("Dips de Rang A", 30, "Descendez jusqu'à 90 degrés.", R.drawable.sculpt),
+                Exercise("Shadow Boxing", 60, "Vitesse et précision.", R.drawable.speed2)
+            )
+        ),
+        "Puissance Bas du Corps" to WorkoutActivity(
+            title = "Puissance Bas du Corps",
+            exercises = listOf(
+                Exercise("Squats de Monarque", 50, "Poids sur les talons.", R.drawable.bas),
+                Exercise("Fentes de Chasseur", 40, "Gardez l'équilibre.", R.drawable.bas),
+                Exercise("Chaise Invisible", 30, "Ne bougez plus, Chasseur.", R.drawable.bas)
+            )
+        ),
+        "Gainage & Force Abdominale" to WorkoutActivity(
+            title = "Gainage & Force Abdominale",
+            exercises = listOf(
+                Exercise("Planche de Mana", 60, "Contractez fort.", R.drawable.gen),
+                Exercise("Russian Twist", 45, "Touchez chaque côté.", R.drawable.gen),
+                Exercise("Crunchs de l'Ombre", 30, "Expirez à la montée.", R.drawable.gen)
+            )
+        ),
+        "Éveil du Monarque" to WorkoutActivity(
+            title = "Éveil du Monarque",
+            exercises = listOf(
+                Exercise("Burpees Explosifs", 45, "Donnez tout !", R.drawable.burn),
+                Exercise("Sprints sur Place", 30, "Plus vite !", R.drawable.speed2),
+                Exercise("Planche Commando", 60, "Force et stabilité.", R.drawable.gen)
+            )
+        ),
+        "Brûle-Graisses Express" to WorkoutActivity(
+            title = "Brûle-Graisses Express",
+            exercises = listOf(
+                Exercise("Jumping Jacks", 45, "Rythme constant.", R.drawable.burn),
+                Exercise("Mountain Climbers", 30, "Genoux vers la poitrine.", R.drawable.burn)
+            )
+        ),
+        "Mobilité & Flexibilité" to WorkoutActivity(
+            title = "Mobilité & Flexibilité",
+            exercises = listOf(
+                Exercise("Rotation des Hanches", 60, "Mouvements amples.", R.drawable.mobility),
+                Exercise("Étirement des Épaules", 45, "Tenez la position.", R.drawable.mobility)
+            )
+        )
+        // Les autres programmes peuvent être ajoutés suivant ce modèle
+    )
+}
+</file>
+
+<file path="app/src/main/java/com/ashiro/fittrack/SplashScreen.kt">
+package com.ashiro.fittrack
+
+import androidx.compose.animation.core.*
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.blur
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import com.ashiro.fittrack.ui.theme.CyanElectric
+import kotlinx.coroutines.delay
+
+@Composable
+fun SplashScreen(onTimeout: () -> Unit) {
+    // 1. Animation de fondu pour l'apparition initiale
+    val alphaAnim = remember { Animatable(0f) }
+
+    // 2. Animation de pulsation pour l'effet "Glow"
+    val infiniteTransition = rememberInfiniteTransition(label = "glow")
+    val glowScale by infiniteTransition.animateFloat(
+        initialValue = 0.8f,
+        targetValue = 1.2f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(1500, easing = FastOutSlowInEasing),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "glowScale"
+    )
+
+    LaunchedEffect(key1 = true) {
+        // Anime l'opacité de 0% à 100% en 1 seconde
+        alphaAnim.animateTo(
+            targetValue = 1f,
+            animationSpec = tween(durationMillis = 1000)
+        )
+        delay(2000) // Laisse le logo visible
+        onTimeout()  // Signale la fin
+    }
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFF0B0F19)),
+        contentAlignment = Alignment.Center
+    ) {
+        // LOGO OCCUPANT TOUT L'ÉCRAN
+        Image(
+            painter = painterResource(id = R.drawable.logo_fittrack), 
+            contentDescription = "FitTrack Logo",
+            modifier = Modifier
+                .fillMaxSize()
+                .alpha(alphaAnim.value),
+            contentScale = ContentScale.Crop // Remplit tout l'écran
+        )
+
+        // EFFET DE HALO (Glow) diffus par-dessus pour l'ambiance "Système"
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .alpha(alphaAnim.value * 0.3f * glowScale)
+                .blur(50.dp)
+                .background(CyanElectric.copy(alpha = 0.4f))
+        )
+
+        // ICONE DE CHARGEMENT RONDE EN BAS AU MILIEU
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(bottom = 64.dp),
+            contentAlignment = Alignment.BottomCenter
+        ) {
+            CircularProgressIndicator(
+                modifier = Modifier.size(44.dp),
+                color = CyanElectric,
+                strokeWidth = 3.dp,
+                trackColor = CyanElectric.copy(alpha = 0.1f)
+            )
+        }
+    }
+}
+</file>
+
+<file path="app/src/main/java/com/ashiro/fittrack/SystemNotificationCard.kt">
+package com.ashiro.fittrack
+
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.ashiro.fittrack.ui.components.SystemButton
+import com.ashiro.fittrack.ui.components.SystemCard
+import com.ashiro.fittrack.ui.theme.CyanElectric
+import com.ashiro.fittrack.ui.theme.FitTrackTheme
+
+@Composable
+fun SystemNotificationCard(
+    onRegistrationComplete: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    var username by remember { mutableStateOf("") }
+
+    SystemCard(
+        modifier = modifier.padding(16.dp)
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "ALERTE DU SYSTÈME",
+                style = MaterialTheme.typography.titleLarge,
+                color = CyanElectric
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+            Divider(color = CyanElectric.copy(alpha = 0.3f), thickness = 1.dp)
+            Spacer(modifier = Modifier.height(24.dp))
+
+            Text(
+                text = "INITIALISATION DU PROGRAMME D'ENTRAÎNEMENT",
+                style = MaterialTheme.typography.labelMedium,
+                color = Color.White
+            )
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            OutlinedTextField(
+                value = username,
+                onValueChange = { username = it },
+                label = { Text("IDENTIFIANT DU CHASSEUR", style = MaterialTheme.typography.labelMedium) },
+                singleLine = true,
+                textStyle = MaterialTheme.typography.bodyLarge.copy(color = Color.White),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = CyanElectric,
+                    unfocusedBorderColor = Color.Gray,
+                    focusedLabelColor = CyanElectric,
+                    cursorColor = CyanElectric
+                ),
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            SystemButton(
+                text = "S'ENREGISTRER",
+                onClick = {
+                    if (username.trim().isNotEmpty()) {
+                        onRegistrationComplete(username)
+                    }
+                },
+                enabled = username.trim().isNotEmpty()
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFF0B0F19)
+@Composable
+fun SystemNotificationCardPreview() {
+    FitTrackTheme {
+        SystemNotificationCard(onRegistrationComplete = {})
+    }
+}
+</file>
+
+<file path="app/src/main/java/com/ashiro/fittrack/ui/components/SystemComponents.kt">
+package com.ashiro.fittrack.ui.components
+
+import androidx.compose.animation.*
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.ashiro.fittrack.R
+import com.ashiro.fittrack.ui.theme.*
+
+/**
+ * Extension Modifier pour appliquer l'effet de verre adaptatif (style iPhone en mode clair)
+ */
+@Composable
+fun Modifier.glassEffect(
+    shape: RoundedCornerShape = RoundedCornerShape(24.dp),
+    borderAlpha: Float = 0.6f
+): Modifier {
+    val isDark = isSystemInDarkTheme()
+    val bgColor = if (isDark) CardBackground.copy(alpha = 0.7f) else Color.White.copy(alpha = 0.45f)
+    val borderColor = if (isDark) CyanElectric.copy(alpha = 0.3f) else Color.White.copy(alpha = borderAlpha)
+    
+    return this
+        .clip(shape)
+        .background(bgColor)
+        .border(1.dp, borderColor, shape)
+}
+
+@Composable
+fun SystemCard(
+    modifier: Modifier = Modifier,
+    onClick: (() -> Unit)? = null,
+    content: @Composable ColumnScope.() -> Unit
+) {
+    Box(
+        modifier = modifier
+            .glassEffect()
+            .then(if (onClick != null) Modifier.clickable { onClick() } else Modifier)
+            .padding(16.dp)
+    ) {
+        Column { content() }
+    }
+}
+
+@Composable
+fun TrainingSessionCard(
+    title: String,
+    duration: String,
+    exercisesCount: Int,
+    calories: Int,
+    muscles: String = "Global",
+    instructions: List<String> = emptyList(),
+    imageRes: Int,
+    onStart: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val isDark = isSystemInDarkTheme()
+    var isExpanded by remember { mutableStateOf(false) }
+    
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .glassEffect(RoundedCornerShape(24.dp))
+            .clickable { isExpanded = !isExpanded }
+            .padding(16.dp)
+    ) {
+        Column {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                // Illustration style iPhone
+                Image(
+                    painter = painterResource(id = imageRes),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(75.dp)
+                        .clip(RoundedCornerShape(18.dp))
+                        .background(Color.Gray.copy(alpha = 0.1f)),
+                    contentScale = ContentScale.Crop
+                )
+
+                Spacer(modifier = Modifier.width(16.dp))
+
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = title.uppercase(),
+                        style = MaterialTheme.typography.titleMedium.copy(
+                            fontWeight = FontWeight.ExtraBold,
+                            letterSpacing = 0.5.sp,
+                            fontSize = 15.sp
+                        ),
+                        color = if (isDark) Color.White else LightTextPrimary
+                    )
+                    
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    // GRILLE DE STATISTIQUES MINIMALISTE (Style Tableau)
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        StatIconItem(Icons.Default.Person, duration, isDark) // Icons.Default.Timer
+                        StatIconItem(Icons.Default.Person, muscles, isDark) // Icons.Default.FitnessCenter
+                        StatIconItem(Icons.Default.Person, "${calories}kcal", isDark) // Icons.Default.Whatshot
+                    }
+                }
+
+                Icon(
+                    imageVector = if (isExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
+                    contentDescription = null,
+                    tint = if (isDark) CyanElectric.copy(alpha = 0.6f) else Color.Gray.copy(alpha = 0.6f),
+                    modifier = Modifier.padding(start = 4.dp)
+                )
+            }
+
+            // ZONE EXTENSIBLE
+            AnimatedVisibility(
+                visible = isExpanded,
+                enter = expandVertically() + fadeIn(),
+                exit = shrinkVertically() + fadeOut()
+            ) {
+                Column(modifier = Modifier.padding(top = 16.dp)) {
+                    HorizontalDivider(
+                        modifier = Modifier.padding(bottom = 12.dp),
+                        color = (if (isDark) CyanElectric else LightPrimary).copy(alpha = 0.15f)
+                    )
+                    
+                    if (instructions.isNotEmpty()) {
+                        Text(
+                            text = "PROTOCOLE DE MISSION :",
+                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
+                            color = if (isDark) CyanElectric else LightPrimary
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                        instructions.forEach { step ->
+                            Row(modifier = Modifier.padding(vertical = 3.dp)) {
+                                Text("•", color = if (isDark) CyanElectric else LightPrimary, modifier = Modifier.padding(end = 8.dp))
+                                Text(
+                                    text = step,
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = if (isDark) Color.LightGray else Color.DarkGray
+                                )
+                            }
+                        }
+                        Spacer(modifier = Modifier.height(16.dp))
+                    }
+
+                    SystemButton(
+                        text = "COMMENCER LE RAID",
+                        onClick = onStart,
+                        modifier = Modifier.height(46.dp)
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun StatIconItem(icon: ImageVector, text: String, isDark: Boolean) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Icon(
+            icon, 
+            contentDescription = null, 
+            modifier = Modifier.size(13.dp),
+            tint = if (isDark) CyanElectric.copy(alpha = 0.8f) else LightPrimary.copy(alpha = 0.8f)
+        )
+        Spacer(modifier = Modifier.width(4.dp))
+        Text(
+            text = text,
+            style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.sp),
+            color = if (isDark) Color.LightGray else Color.DarkGray
+        )
+    }
+}
+
+@Composable
+fun SystemButton(
+    text: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    isSecondary: Boolean = false
+) {
+    val isDark = isSystemInDarkTheme()
+    val containerColor = if (isSecondary) Color.Transparent else (if (isDark) ManaPurple else LightPrimary)
+    val contentColor = if (isSecondary) (if (isDark) CyanElectric else LightPrimary) else Color.White
+
+    Button(
+        onClick = onClick,
+        enabled = enabled,
+        modifier = modifier.fillMaxWidth().height(52.dp),
+        shape = RoundedCornerShape(16.dp),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = containerColor,
+            contentColor = contentColor
+        ),
+        border = if (isSecondary) androidx.compose.foundation.BorderStroke(1.dp, if (isDark) CyanElectric else LightPrimary) else null
+    ) {
+        Text(text.uppercase(), style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold, letterSpacing = 2.sp))
+    }
+}
+</file>
+
+<file path="app/src/main/java/com/ashiro/fittrack/ui/screens/AboutScreen.kt">
+package com.ashiro.fittrack.ui.screens
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.ashiro.fittrack.ui.components.SystemCard
+import com.ashiro.fittrack.ui.theme.CyanElectric
+
+@Composable
+fun AboutScreen(onBack: () -> Unit) {
+    Box(modifier = Modifier.fillMaxSize()) {
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            // HEADER
+            item {
+                Row(
+                    modifier = Modifier.fillMaxWidth().statusBarsPadding(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    IconButton(onClick = onBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Retour",
+                            tint = Color.White
+                        )
+                    }
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Column {
+                        Text(
+                            text = "À PROPOS",
+                            style = MaterialTheme.typography.headlineSmall.copy(
+                                fontWeight = FontWeight.ExtraBold,
+                                letterSpacing = 3.sp
+                            ),
+                            color = Color.White
+                        )
+                        HorizontalDivider(
+                            modifier = Modifier.width(80.dp).padding(top = 4.dp),
+                            thickness = 2.dp,
+                            color = CyanElectric
+                        )
+                    }
+                }
+            }
+
+            // APP INFO
+            item {
+                SystemCard {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
+                        Icon(
+                            Icons.Default.Info,
+                            contentDescription = null,
+                            tint = CyanElectric,
+                            modifier = Modifier.size(64.dp)
+                        )
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Text(
+                            text = "FitTrack System",
+                            style = MaterialTheme.typography.titleLarge,
+                            color = Color.White
+                        )
+                        Text(
+                            text = "Version 1.0.0 (Rang S)",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = CyanElectric
+                        )
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Text(
+                            text = "FitTrack est un système de fitness inspiré de l'esthétique Solo Leveling. " +
+                                    "Transformez votre entraînement en quête épique, suivez vos statistiques de chasseur " +
+                                    "et éveillez votre plein potentiel physique.",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = Color.LightGray,
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                }
+            }
+
+            // CREATOR INFO
+            item {
+                SystemCard {
+                    Text(
+                        text = "LE CRÉATEUR DU SYSTÈME",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = CyanElectric
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Box(
+                            modifier = Modifier
+                                .size(60.dp)
+                                .clip(CircleShape)
+                                .background(CyanElectric.copy(alpha = 0.1f))
+                                .border(1.dp, CyanElectric, CircleShape),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text("A", color = Color.White, fontWeight = FontWeight.Bold, fontSize = 24.sp)
+                        }
+                        Spacer(modifier = Modifier.width(16.dp))
+                        Column {
+                            Text(
+                                text = "Ashiro",
+                                style = MaterialTheme.typography.titleMedium,
+                                color = Color.White
+                            )
+                            Text(
+                                text = "Architecte de Rang National",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = Color.Gray
+                            )
+                        }
+                    }
+                }
+            }
+            
+            item {
+                Text(
+                    text = "© 2026 Ashiro FitTrack. Tous droits réservés au Monarque.",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = Color.DarkGray,
+                    modifier = Modifier.fillMaxWidth().padding(top = 32.dp),
+                    textAlign = TextAlign.Center
+                )
+            }
+        }
+    }
+}
+</file>
+
+<file path="app/src/main/java/com/ashiro/fittrack/ui/screens/ExerciseTimerScreen.kt">
+package com.ashiro.fittrack.ui.screens
+
+import androidx.compose.animation.*
+import androidx.compose.animation.core.*
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Male
+import androidx.compose.material.icons.filled.Female
+import androidx.compose.material.icons.filled.FitnessCenter
+//import androidx.compose.material.icons.filled.SkipNext
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.ashiro.fittrack.R
+import com.ashiro.fittrack.model.WorkoutDatabase
+import com.ashiro.fittrack.ui.components.SystemButton
+import com.ashiro.fittrack.ui.theme.CyanElectric
+import com.ashiro.fittrack.ui.theme.ManaPurple
+import kotlinx.coroutines.delay
+
+@Composable
+fun ExerciseTimerScreen(
+    activityName: String,
+    onFinish: () -> Unit
+) {
+    val activity = WorkoutDatabase.allActivities[activityName] ?: return
+    var currentExerciseIndex by remember { mutableIntStateOf(0) }
+    val currentExercise = activity.exercises[currentExerciseIndex]
+    
+    var timeLeft by remember { mutableIntStateOf(currentExercise.durationSeconds) }
+    var isRunning by remember { mutableStateOf(true) }
+
+    // Reset timer when exercise changes
+    LaunchedEffect(currentExerciseIndex) {
+        timeLeft = activity.exercises[currentExerciseIndex].durationSeconds
+        isRunning = true
+    }
+
+    LaunchedEffect(isRunning) {
+        while (isRunning && timeLeft > 0) {
+            delay(1000L)
+            timeLeft--
+            if (timeLeft == 0) {
+                if (currentExerciseIndex < activity.exercises.size - 1) {
+                    currentExerciseIndex++
+                } else {
+                    onFinish()
+                }
+            }
+        }
+    }
+
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(24.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        // TOP BAR
+        Row(
+            modifier = Modifier.fillMaxWidth().statusBarsPadding(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column {
+                Text(
+                    text = "RAID EN COURS",
+                    style = MaterialTheme.typography.labelMedium,
+                    color = CyanElectric
+                )
+                Text(
+                    text = activity.title.uppercase(),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = Color.Gray
+                )
+            }
+            IconButton(onClick = onFinish) {
+                Icon(Icons.Default.Close, contentDescription = "Quitter", tint = Color.White)
+            }
+        }
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        // ZONE D'ANIMATION DE L'EXERCICE
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp)
+                .clip(RoundedCornerShape(24.dp))
+                .background(Color.Black.copy(alpha = 0.4f))
+                .border(1.dp, CyanElectric.copy(alpha = 0.2f), RoundedCornerShape(24.dp)),
+            contentAlignment = Alignment.Center
+        ) {
+            if (currentExercise.animationRes != null) {
+                // Placeholder pour l'animation (Image pour l'instant)
+                androidx.compose.foundation.Image(
+                    painter = painterResource(id = currentExercise.animationRes),
+                    contentDescription = null,
+                    modifier = Modifier.fillMaxSize().padding(16.dp),
+                    contentScale = ContentScale.Fit
+                )
+            } else {
+                Icon(Icons.Default.FitnessCenter, contentDescription = null, tint = CyanElectric.copy(alpha = 0.3f), modifier = Modifier.size(80.dp))
+            }
+            
+            // Overlay Text
+            Box(modifier = Modifier.fillMaxSize().padding(12.dp), contentAlignment = Alignment.BottomStart) {
+                Text(
+                    text = "EXERCICE ${currentExerciseIndex + 1}/${activity.exercises.size}",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = Color.White.copy(alpha = 0.6f)
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(32.dp))
+
+        Text(
+            text = currentExercise.name.uppercase(),
+            style = MaterialTheme.typography.titleLarge.copy(
+                fontWeight = FontWeight.Black,
+                letterSpacing = 2.sp
+            ),
+            color = Color.White,
+            textAlign = TextAlign.Center
+        )
+
+        Spacer(modifier = Modifier.height(48.dp))
+
+        // TIMER CIRCULAIRE
+        Box(contentAlignment = Alignment.Center) {
+            val progress = timeLeft.toFloat() / currentExercise.durationSeconds.toFloat()
+            
+            Canvas(modifier = Modifier.size(220.dp)) {
+                drawCircle(
+                    color = Color.White.copy(alpha = 0.05f),
+                    style = Stroke(width = 8.dp.toPx())
+                )
+                drawArc(
+                    color = CyanElectric,
+                    startAngle = -90f,
+                    sweepAngle = 360f * progress,
+                    useCenter = false,
+                    style = Stroke(width = 12.dp.toPx(), cap = StrokeCap.Round)
+                )
+            }
+            
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Text(
+                    text = "${(timeLeft / 60).toString().padStart(2, '0')}:${(timeLeft % 60).toString().padStart(2, '0')}",
+                    style = MaterialTheme.typography.headlineLarge.copy(
+                        fontSize = 54.sp,
+                        fontWeight = FontWeight.Bold,
+                        letterSpacing = 4.sp
+                    ),
+                    color = Color.White
+                )
+                Text(
+                    text = "SECONDES",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = CyanElectric
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.weight(1f))
+
+        // CONTROLES
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            SystemButton(
+                text = if (isRunning) "PAUSE" else "REPRENDRE",
+                onClick = { isRunning = !isRunning },
+                modifier = Modifier.weight(1f),
+                isSecondary = true
+            )
+
+            if (currentExerciseIndex < activity.exercises.size - 1) {
+                SystemButton(
+                    text = "SUIVANT",
+                    onClick = { currentExerciseIndex++ },
+                    modifier = Modifier.weight(1f)
+                )
+            } else {
+                SystemButton(
+                    text = "TERMINER",
+                    onClick = onFinish,
+                    modifier = Modifier.weight(1f)
+                )
+            }
+        }
+        
+        Spacer(modifier = Modifier.height(24.dp))
+    }
+}
+</file>
+
+<file path="app/src/main/java/com/ashiro/fittrack/ui/screens/HunterRegistrationScreen.kt">
+package com.ashiro.fittrack.ui.screens
+
+import androidx.compose.animation.core.*
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.VerticalPager
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.ashiro.fittrack.ui.components.SystemButton
+import com.ashiro.fittrack.ui.theme.CyanElectric
+import com.ashiro.fittrack.ui.theme.ManaPurple
+import kotlinx.coroutines.launch
+import kotlin.math.absoluteValue
+
+@Composable
+fun HunterRegistrationScreen(
+    onComplete: (HunterProfile) -> Unit
+) {
+    val pagerState = rememberPagerState(pageCount = { 7 })
+    val scope = rememberCoroutineScope()
+    
+    var name by remember { mutableStateOf("") }
+    var sex by remember { mutableStateOf("M") }
+    var age by remember { mutableIntStateOf(25) }
+    var height by remember { mutableIntStateOf(175) }
+    var weight by remember { mutableIntStateOf(70) }
+    var goal by remember { mutableStateOf("Prendre du muscle") }
+    var activityLevel by remember { mutableStateOf("Intermédiaire") }
+
+    Box(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize()) {
+            // BARRE DE SYNCHRONISATION
+            Column(modifier = Modifier.padding(top = 60.dp, start = 40.dp, end = 40.dp)) {
+                Text(
+                    text = "INITIALISATION : ${(pagerState.currentPage + 1) * 100 / 7}%",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = CyanElectric,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+                LinearProgressIndicator(
+                    progress = { (pagerState.currentPage + 1).toFloat() / 7f },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(4.dp)
+                        .clip(CircleShape),
+                    color = CyanElectric,
+                    trackColor = Color.White.copy(alpha = 0.1f),
+                )
+            }
+
+            HorizontalPager(
+                state = pagerState,
+                modifier = Modifier.weight(1f),
+                userScrollEnabled = false,
+                beyondViewportPageCount = 1
+            ) { page ->
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth(0.85f)
+                            .background(Color.Black.copy(alpha = 0.7f), RoundedCornerShape(32.dp))
+                            .border(1.dp, CyanElectric.copy(alpha = 0.3f), RoundedCornerShape(32.dp))
+                            .padding(24.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        // ASSISTANT AVATAR
+                        Box(
+                            modifier = Modifier
+                                .size(70.dp)
+                                .background(ManaPurple.copy(alpha = 0.1f), CircleShape)
+                                .border(1.dp, CyanElectric.copy(alpha = 0.5f), CircleShape),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Icon(
+                                Icons.Default.Face,
+                                contentDescription = "Assistant", 
+                                tint = CyanElectric, 
+                                modifier = Modifier.size(40.dp)
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.height(24.dp))
+
+                        when (page) {
+                            0 -> NameStep(name) { name = it }
+                            1 -> SexStep(sex) { sex = it }
+                            2 -> AgeStep(age) { age = it }
+                            3 -> HeightStep(height) { height = it }
+                            4 -> WeightStep(weight) { weight = it }
+                            5 -> GoalStep(goal) { goal = it }
+                            6 -> ActivityLevelStep(activityLevel) { activityLevel = it }
+                        }
+                    }
+                }
+            }
+
+            // NAVIGATION
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(24.dp)
+                    .padding(bottom = 32.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                if (pagerState.currentPage > 0) {
+                    SystemButton(
+                        text = "RETOUR",
+                        onClick = { 
+                            scope.launch { 
+                                pagerState.animateScrollToPage(
+                                    pagerState.currentPage - 1,
+                                    animationSpec = tween(500, easing = FastOutSlowInEasing)
+                                ) 
+                            } 
+                        },
+                        modifier = Modifier.weight(1f),
+                        isSecondary = true
+                    )
+                    Spacer(modifier = Modifier.width(16.dp))
+                }
+                
+                SystemButton(
+                    text = if (pagerState.currentPage == 6) "INITIALISER" else "SUIVANT",
+                    onClick = {
+                        if (pagerState.currentPage < 6) {
+                            scope.launch { 
+                                pagerState.animateScrollToPage(
+                                    pagerState.currentPage + 1,
+                                    animationSpec = tween(500, easing = FastOutSlowInEasing)
+                                ) 
+                            }
+                        } else {
+                            onComplete(HunterProfile(name, sex, age, height, weight, goal, activityLevel))
+                        }
+                    },
+                    modifier = Modifier.weight(1f),
+                    enabled = if (pagerState.currentPage == 0) name.isNotBlank() else true
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun NameStep(name: String, onNameChange: (String) -> Unit) {
+    StepLayout(title = "IDENTIFIANT", subtitle = "Enregistrez votre pseudo") {
+        OutlinedTextField(
+            value = name,
+            onValueChange = onNameChange,
+            textStyle = LocalTextStyle.current.copy(color = Color.White, textAlign = TextAlign.Center, fontSize = 20.sp),
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedBorderColor = CyanElectric,
+                unfocusedBorderColor = Color.Gray,
+                cursorColor = CyanElectric
+            ),
+            modifier = Modifier.fillMaxWidth(),
+            singleLine = true
+        )
+    }
+}
+
+@Composable
+fun SexStep(selectedSex: String, onSexSelect: (String) -> Unit) {
+    StepLayout(title = "PROFIL BIOLOGIQUE", subtitle = "Choisissez votre sexe") {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            // Utilisation d'icônes standard pour éviter les erreurs "Unresolved reference"
+            SexCircleButton(
+                label = "MÂLE", 
+                icon = Icons.Default.Male,
+                isSelected = selectedSex == "M", 
+                onClick = { onSexSelect("M") }
+            )
+            Spacer(modifier = Modifier.height(32.dp))
+            SexCircleButton(
+                label = "FEMELLE", 
+                icon = Icons.Default.Female,
+                isSelected = selectedSex == "F", 
+                onClick = { onSexSelect("F") }
+            )
+        }
+    }
+}
+
+@Composable
+fun AgeStep(selectedAge: Int, onAgeSelect: (Int) -> Unit) {
+    StepLayout(title = "CYCLE DE VIE", subtitle = "Âge actuel") {
+        WheelPicker(range = 10..100, selectedValue = selectedAge, onValueSelected = onAgeSelect, unit = "ANS")
+    }
+}
+
+@Composable
+fun HeightStep(selectedHeight: Int, onHeightSelect: (Int) -> Unit) {
+    StepLayout(title = "ENVERGURE", subtitle = "Taille en centimètres") {
+        WheelPicker(range = 100..250, selectedValue = selectedHeight, onValueSelected = onHeightSelect, unit = "CM")
+    }
+}
+
+@Composable
+fun WeightStep(selectedWeight: Int, onWeightSelect: (Int) -> Unit) {
+    StepLayout(title = "MASSE", subtitle = "Poids en kilogrammes") {
+        WheelPicker(range = 30..200, selectedValue = selectedWeight, onValueSelected = onWeightSelect, unit = "KG")
+    }
+}
+
+@Composable
+fun GoalStep(selectedGoal: String, onGoalSelect: (String) -> Unit) {
+    val goals = listOf("Perdre du poids", "Prendre du muscle", "Endurance", "Remise en forme")
+    StepLayout(title = "MISSION", subtitle = "Quel est votre objectif ?") {
+        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            goals.forEach { goal ->
+                SelectionBox(label = goal, isSelected = selectedGoal == goal) { onGoalSelect(goal) }
+            }
+        }
+    }
+}
+
+@Composable
+fun ActivityLevelStep(selectedLevel: String, onLevelSelect: (String) -> Unit) {
+    val levels = listOf("Débutant", "Intermédiaire", "Avancé", "Expert")
+    StepLayout(title = "NIVEAU D'ÉNERGIE", subtitle = "Évaluez votre potentiel") {
+        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            levels.forEach { level ->
+                SelectionBox(label = level, isSelected = selectedLevel == level) { onLevelSelect(level) }
+            }
+        }
+    }
+}
+
+@Composable
+fun StepLayout(title: String, subtitle: String, content: @Composable () -> Unit) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(text = title, style = MaterialTheme.typography.titleLarge.copy(letterSpacing = 2.sp), color = Color.White)
+        Text(text = subtitle.uppercase(), style = MaterialTheme.typography.labelSmall, color = CyanElectric, modifier = Modifier.padding(bottom = 24.dp))
+        content()
+    }
+}
+
+@Composable
+fun SexCircleButton(label: String, icon: ImageVector, isSelected: Boolean, onClick: () -> Unit) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.clickable { onClick() }) {
+        Box(
+            modifier = Modifier
+                .size(120.dp) // Bouton plus gros
+                .clip(CircleShape)
+                .background(if (isSelected) ManaPurple.copy(alpha = 0.4f) else Color.White.copy(alpha = 0.05f))
+                .border(2.dp, if (isSelected) CyanElectric else Color.Transparent, CircleShape),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                icon, 
+                contentDescription = null, 
+                tint = if (isSelected) Color.White else Color.Gray, 
+                modifier = Modifier.size(54.dp)
+            )
+        }
+        Text(
+            label, 
+            style = MaterialTheme.typography.labelMedium, 
+            color = if (isSelected) CyanElectric else Color.Gray, 
+            modifier = Modifier.padding(top = 8.dp)
+        )
+    }
+}
+
+@Composable
+fun SelectionBox(label: String, isSelected: Boolean, onClick: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(12.dp))
+            .background(if (isSelected) ManaPurple.copy(alpha = 0.3f) else Color.White.copy(alpha = 0.05f))
+            .border(1.dp, if (isSelected) CyanElectric else Color.Transparent, RoundedCornerShape(12.dp))
+            .clickable { onClick() }
+            .padding(16.dp)
+    ) {
+        Text(text = label.uppercase(), style = MaterialTheme.typography.labelMedium, color = if (isSelected) CyanElectric else Color.White, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
+    }
+}
+
+@Composable
+fun WheelPicker(
+    range: IntRange,
+    selectedValue: Int,
+    onValueSelected: (Int) -> Unit,
+    unit: String
+) {
+    val itemHeight = 60.dp
+    val rangeList = range.toList()
+    val initialPage = rangeList.indexOf(selectedValue).coerceAtLeast(0)
+    
+    val pagerState = rememberPagerState(
+        initialPage = initialPage,
+        pageCount = { rangeList.size }
+    )
+
+    LaunchedEffect(pagerState.currentPage) {
+        onValueSelected(rangeList[pagerState.currentPage])
+    }
+
+    Box(
+        modifier = Modifier
+            .height(itemHeight * 3)
+            .width(160.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Box(
+            modifier = Modifier
+                .height(itemHeight)
+                .fillMaxWidth()
+                .border(1.dp, CyanElectric.copy(alpha = 0.5f), RoundedCornerShape(8.dp))
+                .background(CyanElectric.copy(alpha = 0.05f))
+        )
+        
+        VerticalPager(
+            state = pagerState,
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(vertical = itemHeight)
+        ) { page ->
+            val value = rangeList[page]
+            val isSelected = page == pagerState.currentPage
+            
+            val pageOffset = (
+                (pagerState.currentPage - page) + pagerState.currentPageOffsetFraction
+            ).absoluteValue
+
+            val scale = 1.2f - (pageOffset.coerceIn(0f, 1f) * 0.3f)
+            val alpha = 1f - (pageOffset.coerceIn(0f, 1f) * 0.7f)
+
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .graphicsLayer {
+                        scaleX = scale
+                        scaleY = scale
+                        this.alpha = alpha
+                    },
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "$value $unit",
+                    style = MaterialTheme.typography.headlineMedium.copy(
+                        color = if (isSelected) CyanElectric else Color.Gray,
+                        fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
+                        fontSize = 24.sp
+                    ),
+                    textAlign = TextAlign.Center
+                )
+            }
+        }
+    }
+}
+
+data class HunterProfile(
+    val name: String,
+    val sex: String,
+    val age: Int,
+    val height: Int,
+    val weight: Int,
+    val goal: String,
+    val activityLevel: String
+)
+</file>
+
+<file path="app/src/main/java/com/ashiro/fittrack/ui/screens/MainDashboard.kt">
+package com.ashiro.fittrack.ui.screens
+
+import androidx.compose.animation.*
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.ashiro.fittrack.ui.components.SystemCard
+import com.ashiro.fittrack.ui.theme.CyanElectric
+import com.ashiro.fittrack.ui.theme.LightPrimary
+import com.ashiro.fittrack.ui.theme.LightTextPrimary
+import com.ashiro.fittrack.ui.theme.ManaPurple
+import kotlinx.coroutines.delay
+import java.util.UUID
+
+// Modèle de donnée pour une quête
+data class HunterQuest(
+    val id: String = UUID.randomUUID().toString(),
+    val title: String,
+    val isCompleted: Boolean = false
+)
+
+@Composable
+fun MainDashboard(username: String, steps: Int) {
+    val isDark = isSystemInDarkTheme()
+    
+    // État persistant de la liste des quêtes
+    var quests by rememberSaveable {
+        mutableStateOf(
+            listOf(
+                HunterQuest(title = "Hydratation (1L/2L)"),
+                HunterQuest(title = "Étirements matinaux"),
+                HunterQuest(title = "Méditation (10min/30min)"),
+                HunterQuest(title = "Aérobic (10min/30min)")
+                )
+        )
+    }
+
+    // État pour l'ajout d'une nouvelle quête
+    var newQuestTitle by remember { mutableStateOf("") }
+    var isAddingQuest by remember { mutableStateOf(false) }
+
+    // Animation de rotation pour le bouton d'ajout
+    val rotationAngle by animateFloatAsState(
+        targetValue = if (isAddingQuest) 135f else 0f,
+        animationSpec = tween(durationMillis = 300),
+        label = "addButtonRotation"
+    )
+
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        item { Spacer(modifier = Modifier.height(16.dp)) }
+
+        // HEADER : Statistiques du Chasseur
+        item {
+            Column(modifier = Modifier.padding(bottom = 8.dp)) {
+                Text(
+                    text = "REGISTRE D'ACTIVITÉ",
+                    style = MaterialTheme.typography.labelMedium.copy(
+                        fontWeight = FontWeight.Bold,
+                        letterSpacing = 2.sp
+                    ),
+                    color = if (isDark) CyanElectric else LightPrimary
+                )
+                Text(
+                    text = username.uppercase(),
+                    style = MaterialTheme.typography.titleLarge.copy(
+                        fontWeight = FontWeight.Black,
+                        fontSize = 28.sp
+                    ),
+                    color = if (isDark) Color.White else LightTextPrimary
+                )
+            }
+        }
+
+        // COMPTEUR DE PAS
+        item {
+            SystemCard {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        imageVector = Icons.Default.CheckCircle, 
+                        contentDescription = null, 
+                        tint = if (isDark) CyanElectric else LightPrimary
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        "PAS AUJOURD'HUI", 
+                        style = MaterialTheme.typography.labelSmall,
+                        color = if (isDark) Color.Gray else Color.DarkGray
+                    )
+                }
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = "$steps / 10,000",
+                    style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
+                    color = if (isDark) Color.White else LightTextPrimary
+                )
+                
+                val stepProgress = (steps.toFloat() / 10000f).coerceIn(0f, 1f)
+                
+                LinearProgressIndicator(
+                    progress = { stepProgress },
+                    modifier = Modifier.fillMaxWidth().height(6.dp).padding(top = 8.dp),
+                    color = if (isDark) CyanElectric else LightPrimary,
+                    trackColor = (if (isDark) Color.White else Color.Black).copy(alpha = 0.1f)
+                )
+            }
+        }
+
+        // SECTION QUÊTES
+        item {
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "MISSIONS EN COURS",
+                    style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
+                    color = if (isDark) CyanElectric else LightPrimary
+                )
+                IconButton(
+                    onClick = { 
+                        isAddingQuest = !isAddingQuest
+                        if (!isAddingQuest) newQuestTitle = "" 
+                    },
+                    modifier = Modifier
+                        .size(32.dp)
+                        .rotate(rotationAngle)
+                        .background(
+                            (if (isAddingQuest) Color.Red else (if (isDark) CyanElectric else LightPrimary)).copy(alpha = 0.15f), 
+                            CircleShape
+                        )
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Add, 
+                        contentDescription = if (isAddingQuest) "Annuler" else "Nouvelle Mission", 
+                        tint = if (isAddingQuest) Color.Red else (if (isDark) CyanElectric else LightPrimary), 
+                        modifier = Modifier.size(20.dp)
+                    )
+                }
+            }
+        }
+
+        if (isAddingQuest) {
+            item {
+                SystemCard {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        OutlinedTextField(
+                            value = newQuestTitle,
+                            onValueChange = { newQuestTitle = it },
+                            label = { Text("TITRE DE LA MISSION", fontSize = 10.sp) },
+                            modifier = Modifier.weight(1f),
+                            singleLine = true,
+                            textStyle = MaterialTheme.typography.bodyMedium.copy(
+                                color = if (isDark) Color.White else LightTextPrimary
+                            ),
+                            colors = OutlinedTextFieldDefaults.colors(
+                                focusedBorderColor = if (isDark) CyanElectric else LightPrimary,
+                                unfocusedBorderColor = Color.Gray.copy(alpha = 0.5f)
+                            )
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Button(
+                            onClick = {
+                                if (newQuestTitle.isNotBlank()) {
+                                    quests = listOf(HunterQuest(title = newQuestTitle)) + quests
+                                    newQuestTitle = ""
+                                    isAddingQuest = false
+                                }
+                            },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = if (isDark) ManaPurple else LightPrimary
+                            ),
+                            shape = RoundedCornerShape(12.dp)
+                        ) {
+                            Text("FIXER", fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                        }
+                    }
+                }
+            }
+        }
+
+        // LISTE DES QUÊTES ACTIVES
+        val activeQuests = quests.filter { !it.isCompleted }
+        items(activeQuests, key = { it.id }) { quest ->
+            QuestItem(
+                quest = quest,
+                isDark = isDark,
+                onToggle = {
+                    quests = quests.map { if (it.id == quest.id) it.copy(isCompleted = true) else it }
+                }
+            )
+        }
+
+        // SECTION MISSIONS ACCOMPLIES
+        val completedQuests = quests.filter { it.isCompleted }
+        if (completedQuests.isNotEmpty()) {
+            item {
+                Text(
+                    text = "ARCHIVES DES MISSIONS",
+                    style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
+                    color = Color.Gray,
+                    modifier = Modifier.padding(top = 16.dp)
+                )
+            }
+            items(completedQuests, key = { it.id }) { quest ->
+                QuestItem(
+                    quest = quest,
+                    isDark = isDark,
+                    onToggle = {
+                        quests = quests.map { if (it.id == quest.id) it.copy(isCompleted = false) else it }
+                    }
+                )
+            }
+        }
+
+        item { Spacer(modifier = Modifier.height(120.dp)) }
+    }
+}
+
+@Composable
+fun QuestItem(quest: HunterQuest, isDark: Boolean, onToggle: () -> Unit) {
+    var isVisible by remember { mutableStateOf(true) }
+    
+    AnimatedVisibility(
+        visible = isVisible,
+        exit = slideOutHorizontally(targetOffsetX = { -it }) + fadeOut(),
+        enter = fadeIn() + expandVertically()
+    ) {
+        SystemCard(
+            modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp)
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(
+                    text = quest.title,
+                    color = if (quest.isCompleted) Color.Gray else (if (isDark) Color.White else LightTextPrimary),
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        textDecoration = if (quest.isCompleted) TextDecoration.LineThrough else TextDecoration.None,
+                        fontWeight = if (quest.isCompleted) FontWeight.Normal else FontWeight.Medium
+                    )
+                )
+                Checkbox(
+                    checked = quest.isCompleted,
+                    onCheckedChange = { isVisible = false },
+                    colors = CheckboxDefaults.colors(
+                        uncheckedColor = if (isDark) CyanElectric else LightPrimary,
+                        checkedColor = if (isDark) CyanElectric else LightPrimary,
+                        checkmarkColor = if (isDark) Color.Black else Color.White
+                    )
+                )
+            }
+        }
+    }
+
+    if (!isVisible) {
+        LaunchedEffect(Unit) {
+            delay(300)
+            onToggle()
+            isVisible = true
+        }
+    }
+}
+</file>
+
+<file path="app/src/main/java/com/ashiro/fittrack/ui/screens/NutritionScreen.kt">
+package com.ashiro.fittrack.ui.screens
+
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import com.ashiro.fittrack.ui.components.SystemCard
+import com.ashiro.fittrack.ui.theme.CyanElectric
+import com.ashiro.fittrack.ui.theme.ManaPurple
+
+data class Meal(val time: String, val name: String, val calories: Int, val description: String)
+
+@Composable
+fun NutritionScreen() {
+    val dailyMeals = listOf(
+        Meal("08:00", "PETIT DÉJEUNER", 450, "Omelette, Avocat, Pain complet"),
+        Meal("12:30", "DÉJEUNER PROTÉINÉ", 700, "Poulet grillé, Riz brun, Brocolis"),
+        Meal("16:00", "GOUTER DE RÉCUPÉRATION", 250, "Shake de protéines, Banane"),
+        Meal("20:00", "DINER ÉQUILIBRÉ", 500, "Saumon, Patate douce, Salade")
+    )
+
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        item {
+            Text(
+                text = "PLAN DE MANA",
+                style = MaterialTheme.typography.labelMedium,
+                color = CyanElectric
+            )
+            Text(
+                text = "ALIMENTATION & ÉNERGIE",
+                style = MaterialTheme.typography.titleLarge,
+                color = Color.White
+            )
+        }
+
+        // Résumé des Macros
+        item {
+            SystemCard {
+                Text(text = "RÉPARTITION DES MACROS", style = MaterialTheme.typography.labelMedium, color = CyanElectric)
+                Spacer(modifier = Modifier.height(16.dp))
+                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                    MacroItem("PROTÉINES", "160g", ManaPurple)
+                    MacroItem("GLUCIDES", "220g", CyanElectric)
+                    MacroItem("LIPIDES", "70g", Color.Yellow)
+                }
+            }
+        }
+
+        // Liste des repas
+        item {
+            Text(text = "REPAS DU JOUR", style = MaterialTheme.typography.labelMedium, color = CyanElectric)
+        }
+
+        items(dailyMeals) { meal ->
+            SystemCard {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column {
+                        Text(text = meal.time, style = MaterialTheme.typography.labelSmall, color = CyanElectric)
+                        Text(text = meal.name, style = MaterialTheme.typography.titleMedium, color = Color.White, fontWeight = FontWeight.Bold)
+                        Text(text = meal.description, style = MaterialTheme.typography.bodySmall, color = Color.LightGray)
+                    }
+                    Text(text = "${meal.calories}\nKCAL", style = MaterialTheme.typography.titleMedium, color = ManaPurple, fontWeight = FontWeight.Bold)
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun MacroItem(label: String, value: String, color: Color) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(text = label, style = MaterialTheme.typography.labelSmall, color = Color.Gray)
+        Text(text = value, style = MaterialTheme.typography.titleMedium, color = color, fontWeight = FontWeight.Bold)
+    }
+}
+</file>
+
+<file path="app/src/main/java/com/ashiro/fittrack/ui/screens/OnboardingScreen.kt">
+package com.ashiro.fittrack.ui.screens
+
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Face
+import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.ashiro.fittrack.R
+import com.ashiro.fittrack.ui.components.SystemButton
+import com.ashiro.fittrack.ui.theme.CyanElectric
+import com.ashiro.fittrack.ui.theme.ManaPurple
+import com.ashiro.fittrack.ui.theme.SystemBackground
+import kotlinx.coroutines.launch
+
+@Composable
+fun OnboardingScreen(onFinished: () -> Unit) {
+    val images = listOf(R.drawable.bg0, R.drawable.bg1, R.drawable.bg2)
+    val titles = listOf(
+        "ÉVEILLEZ VOTRE POTENTIEL",
+        "DOMINEZ VOS LIMITES",
+        "FORGEZ VOTRE LÉGENDE"
+    )
+    val descriptions = listOf(
+        "Le Système a détecté un nouveau porteur. Initialisation du protocole de suivi FitTrack.",
+        "Transformez chaque séance en quête de rang S. Le monde virtuel devient votre terrain de jeu.",
+        "Optimisez vos statistiques corporelles grâce à l'assistant d'entraînement intelligent."
+    )
+
+    val pagerState = rememberPagerState(pageCount = { images.size })
+    val scope = rememberCoroutineScope()
+
+    Box(modifier = Modifier.fillMaxSize().background(SystemBackground)) {
+        // 1. CARROUSEL D'IMAGES (Défilement horizontal)
+        HorizontalPager(
+            state = pagerState,
+            modifier = Modifier.fillMaxSize()
+        ) { page ->
+            Image(
+                painter = painterResource(id = images[page]),
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.Crop,
+                alpha = 0.4f
+            )
+        }
+
+        // 2. BARRE DE PROGRESSION STYLISÉE (EN HAUT)
+        Column(modifier = Modifier.fillMaxSize()) {
+            Spacer(modifier = Modifier.height(60.dp))
+            
+            val progress by animateFloatAsState(
+                targetValue = (pagerState.currentPage + 1).toFloat() / images.size,
+                label = "system_sync"
+            )
+            
+            Column(modifier = Modifier.padding(horizontal = 40.dp)) {
+                Text(
+                    text = "SYNCHRONISATION DU SYSTÈME : ${(progress * 100).toInt()}%",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = CyanElectric,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(6.dp)
+                        .background(Color.White.copy(alpha = 0.1f), CircleShape)
+                        .border(1.dp, CyanElectric.copy(alpha = 0.2f), CircleShape)
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth(progress)
+                            .fillMaxHeight()
+                            .background(
+                                Brush.horizontalGradient(listOf(CyanElectric, ManaPurple)),
+                                CircleShape
+                            )
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(40.dp))
+
+            // 3. TITRE BIENVENU STYLISÉ
+            Text(
+                text = "BIENVENUE DANS\nFITTRACK",
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp),
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.titleLarge.copy(
+                    fontSize = 32.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    letterSpacing = 6.sp,
+                    lineHeight = 40.sp,
+                    brush = Brush.verticalGradient(listOf(Color.White, CyanElectric))
+                )
+            )
+
+            Spacer(modifier = Modifier.weight(1f))
+
+            // 4. CADRE DE L'ASSISTANT AVATAR ET TEXTES
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(24.dp)
+                    .clip(RoundedCornerShape(32.dp))
+                    .background(Color.Black.copy(alpha = 0.8f))
+                    .border(1.dp, CyanElectric.copy(alpha = 0.4f), RoundedCornerShape(32.dp))
+                    .padding(24.dp)
+            ) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    // AVATAR ASSISTANT 2D (Style Hologramme)
+                    Box(
+                        modifier = Modifier
+                            .size(100.dp)
+                            .background(ManaPurple.copy(alpha = 0.1f), CircleShape)
+                            .border(2.dp, Brush.sweepGradient(listOf(CyanElectric, ManaPurple)), CircleShape),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        // Icône d'assistant (Avatar 2D placeholder)
+                        Icon(
+                            imageVector = Icons.Default.Face, 
+                            contentDescription = "Assistant AI",
+                            modifier = Modifier.size(60.dp),
+                            tint = CyanElectric
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(20.dp))
+
+                    Text(
+                        text = titles[pagerState.currentPage],
+                        style = MaterialTheme.typography.titleMedium,
+                        color = CyanElectric,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center
+                    )
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    Text(
+                        text = descriptions[pagerState.currentPage],
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = Color.White,
+                        textAlign = TextAlign.Center,
+                        lineHeight = 22.sp
+                    )
+
+                    Spacer(modifier = Modifier.height(32.dp))
+
+                    SystemButton(
+                        text = if (pagerState.currentPage == images.size - 1) "S'ÉVEILLER" else "SUIVANT",
+                        onClick = {
+                            if (pagerState.currentPage < images.size - 1) {
+                                scope.launch {
+                                    pagerState.animateScrollToPage(pagerState.currentPage + 1)
+                                }
+                            } else {
+                                onFinished()
+                            }
+                        }
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.height(40.dp))
+        }
+    }
+}
+</file>
+
+<file path="app/src/main/java/com/ashiro/fittrack/ui/screens/ProfileScreen.kt">
+package com.ashiro.fittrack.ui.screens
+
+import android.content.Context
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.ashiro.fittrack.ui.components.SystemCard
+import com.ashiro.fittrack.ui.theme.CyanElectric
+import com.ashiro.fittrack.ui.theme.ManaPurple
+
+@Composable
+fun ProfileScreen(onBack: () -> Unit) {
+    val context = LocalContext.current
+    val prefs = context.getSharedPreferences("FitTrackPrefs", Context.MODE_PRIVATE)
+
+    val name = prefs.getString("USERNAME", "CHASSEUR INCONNU") ?: "CHASSEUR INCONNU"
+    val rank = "RANG E" 
+
+    Box(modifier = Modifier.fillMaxSize()) {
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            // HEADER : TITRE DU SYSTÈME AVEC BOUTON RETOUR
+            item {
+                Row(
+                    modifier = Modifier.fillMaxWidth().statusBarsPadding(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    IconButton(onClick = onBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack, 
+                            contentDescription = "Retour", 
+                            tint = Color.White
+                        )
+                    }
+                    
+                    Spacer(modifier = Modifier.width(8.dp))
+
+                    Column {
+                        Text(
+                            text = "STATISTIQUES DU CHASSEUR",
+                            style = MaterialTheme.typography.headlineSmall.copy(
+                                fontWeight = FontWeight.ExtraBold,
+                                letterSpacing = 2.sp
+                            ),
+                            color = Color.White
+                        )
+                        HorizontalDivider(
+                            modifier = Modifier.width(150.dp).padding(top = 4.dp),
+                            thickness = 2.dp,
+                            color = CyanElectric
+                        )
+                    }
+                }
+            }
+
+            // BLOC IDENTITÉ
+            item {
+                SystemCard {
+                    Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                        // Avatar
+                        Box(contentAlignment = Alignment.Center) {
+                            Box(
+                                modifier = Modifier
+                                    .size(100.dp)
+                                    .clip(CircleShape)
+                                    .border(2.dp, CyanElectric, CircleShape)
+                                    .background(CyanElectric.copy(alpha = 0.1f))
+                            )
+                            Icon(Icons.Default.Person, contentDescription = null, tint = CyanElectric, modifier = Modifier.size(60.dp))
+                        }
+
+                        Spacer(modifier = Modifier.width(24.dp))
+
+                        Column {
+                            Text(text = name.uppercase(), style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold), color = Color.White)
+                            Text(text = "RANG : $rank", style = MaterialTheme.typography.labelSmall, color = CyanElectric)
+                            Spacer(modifier = Modifier.height(12.dp))
+                            
+                            // Icônes Core stables
+                            ProfileSmallStat(Icons.Default.KeyboardArrowUp, "${prefs.getInt("HEIGHT", 0)} CM")
+                            ProfileSmallStat(Icons.Default.Info, "${prefs.getInt("WEIGHT", 0)} KG")
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.height(24.dp))
+
+                    // Jauge d'XP
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                        Text(text = "EXP", style = MaterialTheme.typography.labelSmall, color = Color.Gray)
+                        Text(text = "75%", style = MaterialTheme.typography.labelSmall, color = CyanElectric)
+                    }
+                    LinearProgressIndicator(
+                        progress = { 0.75f },
+                        modifier = Modifier.fillMaxWidth().height(10.dp).clip(CircleShape),
+                        color = CyanElectric,
+                        trackColor = Color.White.copy(alpha = 0.1f)
+                    )
+                }
+            }
+
+            // SKILL TRACKER
+            item {
+                SystemCard {
+                    Text("REGISTRE DES CAPACITÉS", style = MaterialTheme.typography.labelMedium.copy(letterSpacing = 2.sp), color = CyanElectric)
+                    Spacer(modifier = Modifier.height(16.dp))
+                    SkillItem("FORCE", 0.85f)
+                    SkillItem("AGILITÉ", 0.70f)
+                    SkillItem("ENDURANCE", 0.90f)
+                    SkillItem("INTELLIGENCE", 0.50f)
+                }
+            }
+
+            // HABIT TRACKER (Graph)
+            item {
+                SystemCard {
+                    Text("HISTORIQUE D'ACTIVITÉ", style = MaterialTheme.typography.labelMedium.copy(letterSpacing = 2.sp), color = CyanElectric)
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Row(
+                        modifier = Modifier.fillMaxWidth().height(120.dp),
+                        horizontalArrangement = Arrangement.SpaceEvenly,
+                        verticalAlignment = Alignment.Bottom
+                    ) {
+                        listOf(0.4f, 0.6f, 0.3f, 0.8f, 0.5f, 0.9f, 0.7f).forEach { h ->
+                            Box(
+                                modifier = Modifier
+                                    .width(16.dp)
+                                    .fillMaxHeight(h)
+                                    .background(CyanElectric.copy(alpha = 0.6f), RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp))
+                                    .border(0.5.dp, CyanElectric, RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp))
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun ProfileSmallStat(icon: ImageVector, text: String) {
+    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(vertical = 2.dp)) {
+        Icon(icon, contentDescription = null, tint = CyanElectric, modifier = Modifier.size(16.dp))
+        Spacer(modifier = Modifier.width(8.dp))
+        Text(text = text, style = MaterialTheme.typography.bodySmall, color = Color.LightGray)
+    }
+}
+
+@Composable
+fun SkillItem(label: String, progress: Float) {
+    Column(modifier = Modifier.padding(vertical = 6.dp)) {
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+            Text(label, style = MaterialTheme.typography.labelSmall, color = Color.White)
+            Text("${(progress * 100).toInt()}%", style = MaterialTheme.typography.labelSmall, color = CyanElectric)
+        }
+        Spacer(modifier = Modifier.height(4.dp))
+        LinearProgressIndicator(
+            progress = { progress },
+            modifier = Modifier.fillMaxWidth().height(6.dp).clip(CircleShape),
+            color = ManaPurple,
+            trackColor = Color.White.copy(alpha = 0.05f)
+        )
+    }
+}
+</file>
+
+<file path="app/src/main/java/com/ashiro/fittrack/ui/screens/StatsScreen.kt">
+package com.ashiro.fittrack.ui.screens
+
+import android.content.Context
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Warning
+import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.ashiro.fittrack.ui.components.SystemCard
+import com.ashiro.fittrack.ui.theme.CyanElectric
+import com.ashiro.fittrack.ui.theme.ManaPurple
+import kotlin.math.pow
+
+@Composable
+fun StatsScreen() {
+    val context = LocalContext.current
+    val prefs = context.getSharedPreferences("FitTrackPrefs", Context.MODE_PRIVATE)
+    
+    // Récupération des données du Système
+    val weight = prefs.getInt("WEIGHT", 0).toFloat()
+    val heightCm = prefs.getInt("HEIGHT", 0).toFloat()
+    val steps = prefs.getInt("DAILY_STEPS", 0)
+    val activityCount = prefs.getInt("COMPLETED_MISSIONS", 0) // Supposons qu'on stocke ça
+    
+    val hasData = weight > 0 && heightCm > 0
+
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        item {
+            Text(
+                text = "REGISTRE D'ÉVOLUTION",
+                style = MaterialTheme.typography.labelMedium.copy(letterSpacing = 2.sp),
+                color = CyanElectric
+            )
+            Text(
+                text = "STATISTIQUES DE FITNESS",
+                style = MaterialTheme.typography.titleLarge,
+                color = Color.White
+            )
+        }
+
+        if (!hasData && steps == 0) {
+            // ÉTAT VIDE : Pas encore d'activité
+            item {
+                SystemCard(modifier = Modifier.padding(top = 40.dp)) {
+                    Column(
+                        modifier = Modifier.fillMaxWidth().padding(vertical = 32.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Icon(
+                            Icons.Default.Warning,
+                            contentDescription = null,
+                            tint = ManaPurple,
+                            modifier = Modifier.size(48.dp)
+                        )
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Text(
+                            text = "AUCUNE DONNÉE DÉTECTÉE",
+                            style = MaterialTheme.typography.titleMedium,
+                            color = Color.White
+                        )
+                        Text(
+                            text = "Commencez une activité ou une quête pour initialiser vos statistiques de puissance.",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = Color.Gray,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.padding(horizontal = 16.dp)
+                        )
+                    }
+                }
+            }
+        } else {
+            // SECTION : ANALYSE DE PUISSANCE (Dynamique)
+            item {
+                val heightM = heightCm / 100f
+                val imc = if (heightM > 0) weight / heightM.pow(2) else 0f
+                
+                // Formule de Puissance "Système"
+                // Basée sur les pas, le poids (stabilité) et l'activité
+                val powerScore = (steps * 0.1f) + (activityCount * 50f) + (if (imc in 18.5..25.0) 100f else 50f)
+                val rank = when {
+                    powerScore > 2000 -> "RANG S"
+                    powerScore > 1000 -> "RANG A"
+                    powerScore > 500 -> "RANG B"
+                    else -> "RANG E"
+                }
+
+                SystemCard {
+                    Text(
+                        text = "SCORE DE PUISSANCE : ${powerScore.toInt()}",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = CyanElectric
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(12.dp)
+                            .background(Color.White.copy(alpha = 0.05f), CircleShape)
+                            .border(1.dp, Color.White.copy(alpha = 0.1f), CircleShape)
+                    ) {
+                        val progress = (powerScore / 2500f).coerceIn(0f, 1f)
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth(progress)
+                                .fillMaxHeight()
+                                .background(
+                                    Brush.horizontalGradient(listOf(ManaPurple, CyanElectric)),
+                                    CircleShape
+                                )
+                        )
+                    }
+                    
+                    Text(
+                        text = "ÉVALUATION : $rank",
+                        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+                        color = Color.White,
+                        modifier = Modifier.padding(top = 12.dp)
+                    )
+                }
+            }
+
+            // SECTION : CALENDRIER D'ACTIVITÉ (Suivi de progrès)
+            item {
+                SystemCard {
+                    Text(
+                        text = "REGISTRE DES ACTIVITES (28 DERNIERS JOURS)",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = CyanElectric
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    
+                    // Grille style "GitHub Contributions" mais version technologique
+                    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        for (row in 0 until 4) {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.spacedBy(4.dp)
+                            ) {
+                                for (col in 0 until 7) {
+                                    // Simulation d'activité : les premiers jours sont plus "actifs"
+                                    val dayIndex = row * 7 + col
+                                    val isActive = dayIndex < (activityCount + 5) % 28
+                                    
+                                    Box(
+                                        modifier = Modifier
+                                            .size(20.dp)
+                                            .background(
+                                                if (isActive) CyanElectric.copy(alpha = 0.6f)
+                                                else Color.White.copy(alpha = 0.05f),
+                                                RoundedCornerShape(4.dp)
+                                            )
+                                            .border(
+                                                1.dp,
+                                                if (isActive) CyanElectric else Color.White.copy(alpha = 0.1f),
+                                                RoundedCornerShape(4.dp)
+                                            )
+                                    )
+                                }
+                            }
+                        }
+                    }
+                    
+                    Spacer(modifier = Modifier.height(12.dp))
+                    Text(
+                        text = "Légende : Activité effectué / En attente",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = Color.Gray
+                    )
+                }
+            }
+
+            // SECTION : RÉCAPITULATIF
+            item {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    Box(modifier = Modifier.weight(1f)) {
+                        StatItemCard("PAS TOTAUX", steps.toString(), CyanElectric)
+                    }
+                    Box(modifier = Modifier.weight(1f)) {
+                        StatItemCard("MISSIONS", activityCount.toString(), ManaPurple)
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun StatItemCard(label: String, value: String, accentColor: Color) {
+    SystemCard {
+        Text(text = label, style = MaterialTheme.typography.labelSmall, color = Color.Gray)
+        Text(
+            text = value,
+            style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.ExtraBold),
+            color = accentColor
+        )
+    }
+}
+</file>
+
+<file path="app/src/main/java/com/ashiro/fittrack/ui/screens/TrainingProgramsScreen.kt">
+package com.ashiro.fittrack.ui.screens
+
+import androidx.compose.animation.*
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.ashiro.fittrack.R
+import com.ashiro.fittrack.ui.components.TrainingSessionCard
+import com.ashiro.fittrack.ui.components.glassEffect
+import com.ashiro.fittrack.ui.theme.CyanElectric
+import com.ashiro.fittrack.ui.theme.LightPrimary
+
+data class WorkoutProgram(
+    val title: String,
+    val duration: String,
+    val exercisesCount: Int,
+    val calories: Int,
+    val muscles: String,
+    val instructions: List<String>,
+    val imageRes: Int
+)
+
+data class WorkoutCategory(
+    val name: String,
+    val programs: List<WorkoutProgram>
+)
+
+@Composable
+fun TrainingProgramsScreen(onStartTraining: (String) -> Unit) {
+    val isDark = isSystemInDarkTheme()
+    
+    val categories = listOf(
+        WorkoutCategory(
+            name = "MUSCULATION & RENFORCEMENT",
+            programs = listOf(
+                WorkoutProgram("Haut du Corps Sculpté", "45 min", 12, 450, "Pec/Dos/Bras", listOf("Pompes de rang S", "Tractions de l'ombre", "Développé militaire"), R.drawable.sculpt),
+                WorkoutProgram("Puissance Bas du Corps", "40 min", 10, 500, "Jambes/Fessiers", listOf("Squats explosifs", "Fentes marchées", "Soulevé de terre"), R.drawable.bas),
+                WorkoutProgram("Gainage & Force Abdominale", "20 min", 8, 200, "Abdos/Lombaires", listOf("Planche de Mana", "Crunchs", "Russian Twist"), R.drawable.gen)
+            )
+        ),
+        WorkoutCategory(
+            name = "CARDIO & HAUTE INTENSITÉ",
+            programs = listOf(
+                WorkoutProgram("HIIT Explosif", "30 min", 15, 600, "Full Body", listOf("Burpees", "Jumping Jacks", "Mountain Climbers"), R.drawable.burn),
+                WorkoutProgram("Brûle-Graisses Express", "45 min", 12, 700, "Endurance", listOf("Course fractionnée", "Corde à sauter"), R.drawable.e_rank)
+            )
+        ),
+        WorkoutCategory(
+            name = "BIEN-ÊTRE & RÉCUPÉRATION",
+            programs = listOf(
+                WorkoutProgram("Réveil Musculaire Doux", "15 min", 6, 100, "Mobilité", listOf("Rotations articulaires", "Étirements légers"), R.drawable.pos),
+                WorkoutProgram("Mobilité & Flexibilité", "20 min", 10, 120, "Articulations", listOf("Ouverture hanches", "Mobilité épaules"), R.drawable.mobility),
+                WorkoutProgram("Stretching Profond", "25 min", 8, 80, "Récupération", listOf("Étirements statiques", "Respiration"), R.drawable.stre)
+            )
+        ),
+        WorkoutCategory(
+            name = "RAIDS SPÉCIAUX",
+            programs = listOf(
+                WorkoutProgram("Agilité & Vitesse", "15 min", 10, 300, "Agilité", listOf("Sprints", "Shadow Boxing"), R.drawable.speed2),
+                WorkoutProgram("Éveil du Monarque", "30 min", 20, 850, "Elite", listOf("Entraînement combiné Rang S"), R.drawable.eveil_mon)
+            )
+        )
+    )
+
+    LazyColumn(
+        modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        item {
+            Column(modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)) {
+                Text(
+                    text = "REGISTRE DES DONJONS",
+                    style = MaterialTheme.typography.labelMedium.copy(letterSpacing = 2.sp),
+                    color = if (isDark) CyanElectric else LightPrimary
+                )
+                Text(
+                    text = "SÉLECTIONNEZ VOTRE RAID",
+                    style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Black),
+                    color = if (isDark) Color.White else Color.Black
+                )
+            }
+        }
+
+        items(categories) { category ->
+            ExpandableCategory(category, onStartTraining)
+        }
+        
+        item { Spacer(modifier = Modifier.height(120.dp)) }
+    }
+}
+
+@Composable
+fun ExpandableCategory(category: WorkoutCategory, onStartTraining: (String) -> Unit) {
+    val isDark = isSystemInDarkTheme()
+    var isExpanded by rememberSaveable { mutableStateOf(false) }
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .glassEffect(RoundedCornerShape(20.dp), borderAlpha = 0.4f)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { isExpanded = !isExpanded }
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(
+                text = category.name,
+                style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
+                color = if (isExpanded) (if (isDark) CyanElectric else LightPrimary) else (if (isDark) Color.White else Color.Black)
+            )
+            Icon(
+                imageVector = if (isExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
+                contentDescription = null,
+                tint = if (isExpanded) (if (isDark) CyanElectric else LightPrimary) else Color.Gray
+            )
+        }
+
+        AnimatedVisibility(
+            visible = isExpanded,
+            enter = expandVertically() + fadeIn(),
+            exit = shrinkVertically() + fadeOut()
+        ) {
+            Column(
+                modifier = Modifier.padding(start = 12.dp, end = 12.dp, bottom = 12.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                category.programs.forEach { program ->
+                    TrainingSessionCard(
+                        title = program.title,
+                        duration = program.duration,
+                        exercisesCount = program.exercisesCount,
+                        calories = program.calories,
+                        muscles = program.muscles,
+                        instructions = program.instructions,
+                        imageRes = program.imageRes,
+                        onStart = { onStartTraining(program.title) }
+                    )
+                }
+            }
+        }
+    }
+}
+</file>
+
+<file path="app/src/main/java/com/ashiro/fittrack/ui/theme/Color.kt">
+package com.ashiro.fittrack.ui.theme
+
+import androidx.compose.ui.graphics.Color
+
+// Palette "Système" Solo Leveling - Sombre
+val SystemBackground = Color(0xFF0B0F19)
+val CyanElectric = Color(0xFF00E5FF)
+val ManaPurple = Color(0xFF9D4EDD)
+val GlassWhite = Color(0xCCFFFFFF)
+val SystemGray = Color(0xFFE0E0E0)
+val CardBackground = Color(0xCC121826)
+val BorderCyan = Color(0x6600E5FF)
+
+// Palette "Système" Solo Leveling - Clair (Effet de verre style iPhone)
+val LightGlassBackground = Color(0xB3FFFFFF) // Blanc avec 70% d'opacité
+val LightGlassBorder = Color(0x4DFFFFFF)     // Bordure blanche très fine
+val LightSystemGray = Color(0xFFF2F2F7)      // Gris clair iOS
+val LightPrimary = Color(0xFF007AFF)         // Bleu iOS pour les accents clairs
+val LightTextPrimary = Color(0xFF1C1C1E)    // Texte sombre pour lisibilité
+
+// Legacy
+val Purple80 = Color(0xFFD0BCFF)
+val PurpleGrey80 = Color(0xFFCCC2DC)
+val Pink80 = Color(0xFFEFB8C8)
+</file>
+
+<file path="app/src/main/java/com/ashiro/fittrack/ui/theme/Theme.kt">
+package com.ashiro.fittrack.ui.theme
+
+import android.app.Activity
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalView
+import androidx.core.view.WindowCompat
+
+private val DarkColorScheme = darkColorScheme(
+    primary = CyanElectric,
+    secondary = ManaPurple,
+    tertiary = CyanElectric,
+    background = SystemBackground,
+    surface = CardBackground,
+    onPrimary = SystemBackground,
+    onSecondary = GlassWhite,
+    onTertiary = SystemBackground,
+    onBackground = GlassWhite,
+    onSurface = SystemGray,
+)
+
+private val LightColorScheme = lightColorScheme(
+    primary = ManaPurple,
+    secondary = CyanElectric,
+    tertiary = ManaPurple,
+    background = SystemGray,
+    surface = GlassWhite,
+    onPrimary = GlassWhite,
+    onSecondary = SystemBackground,
+    onTertiary = GlassWhite,
+    onBackground = SystemBackground,
+    onSurface = SystemBackground,
+)
+
+@Composable
+fun FitTrackTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    // On désactive le dynamicColor pour garder l'identité visuelle Solo Leveling
+    dynamicColor: Boolean = false,
+    content: @Composable () -> Unit
+) {
+    val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
+
+    val view = LocalView.current
+    if (!view.isInEditMode) {
+        SideEffect {
+            val window = (view.context as Activity).window
+            window.statusBarColor = colorScheme.background.toArgb()
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
+        }
+    }
+
+    MaterialTheme(
+        colorScheme = colorScheme,
+        typography = Typography,
+        content = content
+    )
+}
+</file>
+
+<file path="app/src/main/java/com/ashiro/fittrack/ui/theme/Type.kt">
+package com.ashiro.fittrack.ui.theme
+
+import androidx.compose.material3.Typography
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
+
+// Configuration Typographique "Système"
+val Typography = Typography(
+    // Titres de sections (Effet "Message du Système")
+    titleLarge = TextStyle(
+        fontFamily = FontFamily.SansSerif,
+        fontWeight = FontWeight.Bold,
+        fontSize = 22.sp,
+        lineHeight = 28.sp,
+        letterSpacing = 2.sp, // Espacement élargi pour le look tech
+    ),
+    // Texte de contenu classique
+    bodyLarge = TextStyle(
+        fontFamily = FontFamily.SansSerif,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp,
+        color = SystemGray
+    ),
+    // Labels et petits textes (ex: Stats)
+    labelMedium = TextStyle(
+        fontFamily = FontFamily.Monospace, // Monospace donne un côté "code" ou "data"
+        fontWeight = FontWeight.Medium,
+        fontSize = 12.sp,
+        lineHeight = 16.sp,
+        letterSpacing = 1.sp,
+        color = CyanElectric
+    )
+)
+</file>
+
+<file path="app/src/main/res/drawable/ic_launcher_background.xml">
+<?xml version="1.0" encoding="utf-8"?>
+<vector
+    android:height="108dp"
+    android:width="108dp"
+    android:viewportHeight="108"
+    android:viewportWidth="108"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#3DDC84"
+          android:pathData="M0,0h108v108h-108z"/>
+    <path android:fillColor="#00000000" android:pathData="M9,0L9,108"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M19,0L19,108"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M29,0L29,108"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M39,0L39,108"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M49,0L49,108"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M59,0L59,108"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M69,0L69,108"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M79,0L79,108"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M89,0L89,108"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M99,0L99,108"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M0,9L108,9"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M0,19L108,19"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M0,29L108,29"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M0,39L108,39"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M0,49L108,49"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M0,59L108,59"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M0,69L108,69"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M0,79L108,79"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M0,89L108,89"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M0,99L108,99"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M19,29L89,29"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M19,39L89,39"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M19,49L89,49"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M19,59L89,59"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M19,69L89,69"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M19,79L89,79"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M29,19L29,89"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M39,19L39,89"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M49,19L49,89"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M59,19L59,89"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M69,19L69,89"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+    <path android:fillColor="#00000000" android:pathData="M79,19L79,89"
+          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
+</vector>
+</file>
+
+<file path="app/src/main/res/drawable/ic_launcher_foreground.xml">
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path android:pathData="M31,63.928c0,0 6.4,-11 12.1,-13.1c7.2,-2.6 26,-1.4 26,-1.4l38.1,38.1L107,108.928l-32,-1L31,63.928z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="85.84757"
+                android:endY="92.4963"
+                android:startX="42.9492"
+                android:startY="49.59793"
+                android:type="linear">
+                <item
+                    android:color="#44000000"
+                    android:offset="0.0" />
+                <item
+                    android:color="#00000000"
+                    android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillType="nonZero"
+        android:pathData="M65.3,45.828l3.8,-6.6c0.2,-0.4 0.1,-0.9 -0.3,-1.1c-0.4,-0.2 -0.9,-0.1 -1.1,0.3l-3.9,6.7c-6.3,-2.8 -13.4,-2.8 -19.7,0l-3.9,-6.7c-0.2,-0.4 -0.7,-0.5 -1.1,-0.3C38.8,38.328 38.7,38.828 38.9,39.228l3.8,6.6C36.2,49.428 31.7,56.028 31,63.928h46C76.3,56.028 71.8,49.428 65.3,45.828zM43.4,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2c-0.3,-0.7 -0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C45.3,56.528 44.5,57.328 43.4,57.328L43.4,57.328zM64.6,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2s-0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C66.5,56.528 65.6,57.328 64.6,57.328L64.6,57.328z"
+        android:strokeWidth="1"
+        android:strokeColor="#00000000" />
+</vector>
+</file>
+
+<file path="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml">
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@drawable/ic_launcher_background"/>
+    <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
+</adaptive-icon>
+</file>
+
+<file path="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml">
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@drawable/ic_launcher_background"/>
+    <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
+</adaptive-icon>
+</file>
+
+<file path="app/src/main/res/values/colors.xml">
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
+</file>
+
+<file path="app/src/main/res/values/strings.xml">
+<resources>
+    <string name="app_name">FitTrack</string>
+</resources>
+</file>
+
+<file path="app/src/main/res/values/themes.xml">
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.FitTrack" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>
+</file>
+
+<file path="app/src/main/res/xml/backup_rules.xml">
+<?xml version="1.0" encoding="utf-8"?><!--
+   Sample backup rules file; uncomment and customize as necessary.
+   See https://developer.android.com/guide/topics/data/autobackup
+   for details.
+   Note: This file is ignored for devices older than API 31
+   See https://developer.android.com/about/versions/12/backup-restore
+-->
+<full-backup-content>
+    <!--
+   <include domain="sharedpref" path="."/>
+   <exclude domain="sharedpref" path="device.xml"/>
+-->
+</full-backup-content>
+</file>
+
+<file path="app/src/main/res/xml/data_extraction_rules.xml">
+<?xml version="1.0" encoding="utf-8"?><!--
+   Sample data extraction rules file; uncomment and customize as necessary.
+   See https://developer.android.com/about/versions/12/backup-restore#xml-changes
+   for details.
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <!-- TODO: Use <include> and <exclude> to control what is backed up.
+        <include .../>
+        <exclude .../>
+        -->
+    </cloud-backup>
+    <!--
+    <device-transfer>
+        <include .../>
+        <exclude .../>
+    </device-transfer>
+    -->
+</data-extraction-rules>
+</file>
+
+<file path="app/src/test/java/com/ashiro/fittrack/ExampleUnitTest.kt">
+package com.ashiro.fittrack
+
+import org.junit.Test
+
+import org.junit.Assert.*
+
+/**
+ * Example local unit test, which will execute on the development machine (host).
+ *
+ * See [testing documentation](http://d.android.com/tools/testing).
+ */
+class ExampleUnitTest {
+    @Test
+    fun addition_isCorrect() {
+        assertEquals(4, 2 + 2)
+    }
+}
+</file>
+
+<file path="build.gradle.kts">
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.compose) apply false
+}
+</file>
+
+<file path="gradle.properties">
+# Project-wide Gradle settings.
+# IDE (e.g. Android Studio) users:
+# Gradle settings configured through the IDE *will override*
+# any settings specified in this file.
+# For more details on how to configure your build environment visit
+# http://www.gradle.org/docs/current/userguide/build_environment.html
+# Specifies the JVM arguments used for the daemon process.
+# The setting is particularly useful for tweaking memory settings.
+org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8
+# When configured, Gradle will run in incubating parallel mode.
+# This option should only be used with decoupled projects. For more details, visit
+# https://developer.android.com/r/tools/gradle-multi-project-decoupled-projects
+# org.gradle.parallel=true
+# AndroidX package structure to make it clearer which packages are bundled with the
+# Android operating system, and which are packaged with your app's APK
+# https://developer.android.com/topic/libraries/support-library/androidx-rn
+android.useAndroidX=true
+# Kotlin code style for this project: "official" or "obsolete":
+kotlin.code.style=official
+# Enables namespacing of each library's R class so that its R class includes only the
+# resources declared in the library itself and none from the library's dependencies,
+# thereby reducing the size of the R class for that library
+android.nonTransitiveRClass=true
+</file>
+
+<file path="gradle/libs.versions.toml">
+[versions]
+agp = "8.13.2"
+kotlin = "2.0.21"
+coreKtx = "1.18.0"
+junit = "4.13.2"
+junitVersion = "1.3.0"
+espressoCore = "3.7.0"
+lifecycleRuntimeKtx = "2.10.0"
+activityCompose = "1.13.0"
+composeBom = "2024.09.00"
+
+[libraries]
+androidx-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+</file>
+
+<file path="gradle/wrapper/gradle-wrapper.properties">
+#Sat May 16 17:14:18 WAT 2026
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-8.13-bin.zip
+networkTimeout=10000
+validateDistributionUrl=true
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+</file>
+
+<file path="gradlew">
+#!/bin/sh
+
+#
+# Copyright © 2015 the original authors.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+##############################################################################
+#
+#   Gradle start up script for POSIX generated by Gradle.
+#
+#   Important for running:
+#
+#   (1) You need a POSIX-compliant shell to run this script. If your /bin/sh is
+#       noncompliant, but you have some other compliant shell such as ksh or
+#       bash, then to run this script, type that shell name before the whole
+#       command line, like:
+#
+#           ksh Gradle
+#
+#       Busybox and similar reduced shells will NOT work, because this script
+#       requires all of these POSIX shell features:
+#         * functions;
+#         * expansions «$var», «${var}», «${var:-default}», «${var+SET}»,
+#           «${var#prefix}», «${var%suffix}», and «$( cmd )»;
+#         * compound commands having a testable exit status, especially «case»;
+#         * various built-in commands including «command», «set», and «ulimit».
+#
+#   Important for patching:
+#
+#   (2) This script targets any POSIX shell, so it avoids extensions provided
+#       by Bash, Ksh, etc; in particular arrays are avoided.
+#
+#       The "traditional" practice of packing multiple parameters into a
+#       space-separated string is a well documented source of bugs and security
+#       problems, so this is (mostly) avoided, by progressively accumulating
+#       options in "$@", and eventually passing that to Java.
+#
+#       Where the inherited environment variables (DEFAULT_JVM_OPTS, JAVA_OPTS,
+#       and GRADLE_OPTS) rely on word-splitting, this is performed explicitly;
+#       see the in-line comments for details.
+#
+#       There are tweaks for specific operating systems such as AIX, CygWin,
+#       Darwin, MinGW, and NonStop.
+#
+#   (3) This script is generated from the Groovy template
+#       https://github.com/gradle/gradle/blob/HEAD/platforms/jvm/plugins-application/src/main/resources/org/gradle/api/internal/plugins/unixStartScript.txt
+#       within the Gradle project.
+#
+#       You can find Gradle at https://github.com/gradle/gradle/.
+#
+##############################################################################
+
+# Attempt to set APP_HOME
+
+# Resolve links: $0 may be a link
+app_path=$0
+
+# Need this for daisy-chained symlinks.
+while
+    APP_HOME=${app_path%"${app_path##*/}"}  # leaves a trailing /; empty if no leading path
+    [ -h "$app_path" ]
+do
+    ls=$( ls -ld "$app_path" )
+    link=${ls#*' -> '}
+    case $link in             #(
+      /*)   app_path=$link ;; #(
+      *)    app_path=$APP_HOME$link ;;
+    esac
+done
+
+# This is normally unused
+# shellcheck disable=SC2034
+APP_BASE_NAME=${0##*/}
+# Discard cd standard output in case $CDPATH is set (https://github.com/gradle/gradle/issues/25036)
+APP_HOME=$( cd -P "${APP_HOME:-./}" > /dev/null && printf '%s\n' "$PWD" ) || exit
+
+# Use the maximum available, or set MAX_FD != -1 to use that value.
+MAX_FD=maximum
+
+warn () {
+    echo "$*"
+} >&2
+
+die () {
+    echo
+    echo "$*"
+    echo
+    exit 1
+} >&2
+
+# OS specific support (must be 'true' or 'false').
+cygwin=false
+msys=false
+darwin=false
+nonstop=false
+case "$( uname )" in                #(
+  CYGWIN* )         cygwin=true  ;; #(
+  Darwin* )         darwin=true  ;; #(
+  MSYS* | MINGW* )  msys=true    ;; #(
+  NONSTOP* )        nonstop=true ;;
+esac
+
+CLASSPATH="\\\"\\\""
+
+
+# Determine the Java command to use to start the JVM.
+if [ -n "$JAVA_HOME" ] ; then
+    if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
+        # IBM's JDK on AIX uses strange locations for the executables
+        JAVACMD=$JAVA_HOME/jre/sh/java
+    else
+        JAVACMD=$JAVA_HOME/bin/java
+    fi
+    if [ ! -x "$JAVACMD" ] ; then
+        die "ERROR: JAVA_HOME is set to an invalid directory: $JAVA_HOME
+
+Please set the JAVA_HOME variable in your environment to match the
+location of your Java installation."
+    fi
+else
+    JAVACMD=java
+    if ! command -v java >/dev/null 2>&1
+    then
+        die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
+
+Please set the JAVA_HOME variable in your environment to match the
+location of your Java installation."
+    fi
+fi
+
+# Increase the maximum file descriptors if we can.
+if ! "$cygwin" && ! "$darwin" && ! "$nonstop" ; then
+    case $MAX_FD in #(
+      max*)
+        # In POSIX sh, ulimit -H is undefined. That's why the result is checked to see if it worked.
+        # shellcheck disable=SC2039,SC3045
+        MAX_FD=$( ulimit -H -n ) ||
+            warn "Could not query maximum file descriptor limit"
+    esac
+    case $MAX_FD in  #(
+      '' | soft) :;; #(
+      *)
+        # In POSIX sh, ulimit -n is undefined. That's why the result is checked to see if it worked.
+        # shellcheck disable=SC2039,SC3045
+        ulimit -n "$MAX_FD" ||
+            warn "Could not set maximum file descriptor limit to $MAX_FD"
+    esac
+fi
+
+# Collect all arguments for the java command, stacking in reverse order:
+#   * args from the command line
+#   * the main class name
+#   * -classpath
+#   * -D...appname settings
+#   * --module-path (only if needed)
+#   * DEFAULT_JVM_OPTS, JAVA_OPTS, and GRADLE_OPTS environment variables.
+
+# For Cygwin or MSYS, switch paths to Windows format before running java
+if "$cygwin" || "$msys" ; then
+    APP_HOME=$( cygpath --path --mixed "$APP_HOME" )
+    CLASSPATH=$( cygpath --path --mixed "$CLASSPATH" )
+
+    JAVACMD=$( cygpath --unix "$JAVACMD" )
+
+    # Now convert the arguments - kludge to limit ourselves to /bin/sh
+    for arg do
+        if
+            case $arg in                                #(
+              -*)   false ;;                            # don't mess with options #(
+              /?*)  t=${arg#/} t=/${t%%/*}              # looks like a POSIX filepath
+                    [ -e "$t" ] ;;                      #(
+              *)    false ;;
+            esac
+        then
+            arg=$( cygpath --path --ignore --mixed "$arg" )
+        fi
+        # Roll the args list around exactly as many times as the number of
+        # args, so each arg winds up back in the position where it started, but
+        # possibly modified.
+        #
+        # NB: a `for` loop captures its iteration list before it begins, so
+        # changing the positional parameters here affects neither the number of
+        # iterations, nor the values presented in `arg`.
+        shift                   # remove old arg
+        set -- "$@" "$arg"      # push replacement arg
+    done
+fi
+
+
+# Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
+DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
+
+# Collect all arguments for the java command:
+#   * DEFAULT_JVM_OPTS, JAVA_OPTS, and optsEnvironmentVar are not allowed to contain shell fragments,
+#     and any embedded shellness will be escaped.
+#   * For example: A user cannot expect ${Hostname} to be expanded, as it is an environment variable and will be
+#     treated as '${Hostname}' itself on the command line.
+
+set -- \
+        "-Dorg.gradle.appname=$APP_BASE_NAME" \
+        -classpath "$CLASSPATH" \
+        -jar "$APP_HOME/gradle/wrapper/gradle-wrapper.jar" \
+        "$@"
+
+# Stop when "xargs" is not available.
+if ! command -v xargs >/dev/null 2>&1
+then
+    die "xargs is not available"
+fi
+
+# Use "xargs" to parse quoted args.
+#
+# With -n1 it outputs one arg per line, with the quotes and backslashes removed.
+#
+# In Bash we could simply go:
+#
+#   readarray ARGS < <( xargs -n1 <<<"$var" ) &&
+#   set -- "${ARGS[@]}" "$@"
+#
+# but POSIX shell has neither arrays nor command substitution, so instead we
+# post-process each arg (as a line of input to sed) to backslash-escape any
+# character that might be a shell metacharacter, then use eval to reverse
+# that process (while maintaining the separation between arguments), and wrap
+# the whole thing up as a single "set" statement.
+#
+# This will of course break if any of these variables contains a newline or
+# an unmatched quote.
+#
+
+eval "set -- $(
+        printf '%s\n' "$DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS" |
+        xargs -n1 |
+        sed ' s~[^-[:alnum:]+,./:=@_]~\\&~g; ' |
+        tr '\n' ' '
+    )" '"$@"'
+
+exec "$JAVACMD" "$@"
+</file>
+
+<file path="gradlew.bat">
+@rem
+@rem Copyright 2015 the original author or authors.
+@rem
+@rem Licensed under the Apache License, Version 2.0 (the "License");
+@rem you may not use this file except in compliance with the License.
+@rem You may obtain a copy of the License at
+@rem
+@rem      https://www.apache.org/licenses/LICENSE-2.0
+@rem
+@rem Unless required by applicable law or agreed to in writing, software
+@rem distributed under the License is distributed on an "AS IS" BASIS,
+@rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+@rem See the License for the specific language governing permissions and
+@rem limitations under the License.
+@rem
+@rem SPDX-License-Identifier: Apache-2.0
+@rem
+
+@if "%DEBUG%"=="" @echo off
+@rem ##########################################################################
+@rem
+@rem  Gradle startup script for Windows
+@rem
+@rem ##########################################################################
+
+@rem Set local scope for the variables with windows NT shell
+if "%OS%"=="Windows_NT" setlocal
+
+set DIRNAME=%~dp0
+if "%DIRNAME%"=="" set DIRNAME=.
+@rem This is normally unused
+set APP_BASE_NAME=%~n0
+set APP_HOME=%DIRNAME%
+
+@rem Resolve any "." and ".." in APP_HOME to make it shorter.
+for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
+
+@rem Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
+set DEFAULT_JVM_OPTS="-Xmx64m" "-Xms64m"
+
+@rem Find java.exe
+if defined JAVA_HOME goto findJavaFromJavaHome
+
+set JAVA_EXE=java.exe
+%JAVA_EXE% -version >NUL 2>&1
+if %ERRORLEVEL% equ 0 goto execute
+
+echo. 1>&2
+echo ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH. 1>&2
+echo. 1>&2
+echo Please set the JAVA_HOME variable in your environment to match the 1>&2
+echo location of your Java installation. 1>&2
+
+goto fail
+
+:findJavaFromJavaHome
+set JAVA_HOME=%JAVA_HOME:"=%
+set JAVA_EXE=%JAVA_HOME%/bin/java.exe
+
+if exist "%JAVA_EXE%" goto execute
+
+echo. 1>&2
+echo ERROR: JAVA_HOME is set to an invalid directory: %JAVA_HOME% 1>&2
+echo. 1>&2
+echo Please set the JAVA_HOME variable in your environment to match the 1>&2
+echo location of your Java installation. 1>&2
+
+goto fail
+
+:execute
+@rem Setup the command line
+
+set CLASSPATH=
+
+
+@rem Execute Gradle
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" -jar "%APP_HOME%\gradle\wrapper\gradle-wrapper.jar" %*
+
+:end
+@rem End local scope for the variables with windows NT shell
+if %ERRORLEVEL% equ 0 goto mainEnd
+
+:fail
+rem Set variable GRADLE_EXIT_CONSOLE if you need the _script_ return code instead of
+rem the _cmd.exe /c_ return code!
+set EXIT_CODE=%ERRORLEVEL%
+if %EXIT_CODE% equ 0 set EXIT_CODE=1
+if not ""=="%GRADLE_EXIT_CONSOLE%" exit %EXIT_CODE%
+exit /b %EXIT_CODE%
+
+:mainEnd
+if "%OS%"=="Windows_NT" endlocal
+
+:omega
+</file>
+
+<file path="settings.gradle.kts">
+pluginManagement {
+    repositories {
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "FitTrack"
+include(":app")
+</file>
+
+<file path="ui/theme/Color.kt">
+package com.ashiro.fittrack.ui.theme
+
+import androidx.compose.ui.graphics.Color
+
+// Palette "Système" Solo Leveling - Sombre
+val SystemBackground = Color(0xFF0B0F19)
+val CyanElectric = Color(0xFF00E5FF)
+val ManaPurple = Color(0xFF9D4EDD)
+val GlassWhite = Color(0xCCFFFFFF)
+val SystemGray = Color(0xFFE0E0E0)
+val CardBackground = Color(0xCC121826)
+val BorderCyan = Color(0x6600E5FF)
+
+// Palette "Système" Solo Leveling - Clair (Effet de verre)
+val LightGlassBackground = Color(0x80FFFFFF) // Blanc semi-transparent
+val LightGlassBorder = Color(0x33000000)     // Bordure discrète
+val LightSystemGray = Color(0xFFF5F5F7)      // Gris iPhone-like
+val LightPrimary = Color(0xFF007AFF)        // Bleu iOS-like pour le mode clair
+
+// Legacy
+val Purple80 = Color(0xFFD0BCFF)
+val PurpleGrey80 = Color(0xFFCCC2DC)
+val Pink80 = Color(0xFFEFB8C8)
+</file>
+
+</files>
