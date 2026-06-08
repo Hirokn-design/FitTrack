@@ -1,5 +1,6 @@
 package com.ashiro.fittrack.ui.screens
 
+import android.content.Context
 import androidx.compose.animation.*
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -13,22 +14,26 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.DirectionsWalk
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ashiro.fittrack.ui.components.SystemCard
+import com.ashiro.fittrack.ui.components.TrainingSessionCard
 import com.ashiro.fittrack.ui.theme.CyanElectric
 import com.ashiro.fittrack.ui.theme.LightPrimary
 import com.ashiro.fittrack.ui.theme.LightTextPrimary
 import com.ashiro.fittrack.ui.theme.ManaPurple
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.delay
 import java.util.UUID
 
@@ -40,19 +45,37 @@ data class HunterQuest(
 )
 
 @Composable
-fun MainDashboard(username: String, steps: Int) {
+fun MainDashboard(username: String, steps: Int, onStartTraining: (String) -> Unit) {
     val isDark = isSystemInDarkTheme()
-    
-    // État persistant de la liste des quêtes
-    var quests by rememberSaveable {
+
+    // 🛠️ Initialisation des outils de persistance locale
+    val context = LocalContext.current
+    val sharedPrefs = remember { context.getSharedPreferences("fittrack_system_prefs", Context.MODE_PRIVATE) }
+    val gson = remember { Gson() }
+
+    // État de la liste chargé depuis la mémoire ou initialisé par défaut
+    var quests by remember {
         mutableStateOf(
-            listOf(
-                HunterQuest(title = "Hydratation (1L/2L)"),
-                HunterQuest(title = "Étirements matinaux"),
-                HunterQuest(title = "Méditation (10min/30min)"),
-                HunterQuest(title = "Aérobic (10min/30min)")
-                )
+            run {
+                val savedQuestsJson = sharedPrefs.getString("saved_hunter_quests", null)
+                if (!savedQuestsJson.isNullOrEmpty()) {
+                    try {
+                        val type = object : TypeToken<List<HunterQuest>>() {}.type
+                        gson.fromJson<List<HunterQuest>>(savedQuestsJson, type)
+                    } catch (e: Exception) {
+                        getInitialQuests()
+                    }
+                } else {
+                    getInitialQuests()
+                }
+            }
         )
+    }
+
+    // 💾 Sauvegarde réactive
+    LaunchedEffect(quests) {
+        val jsonString = gson.toJson(quests)
+        sharedPrefs.edit().putString("saved_hunter_quests", jsonString).apply()
     }
 
     // État pour l'ajout d'une nouvelle quête
@@ -78,7 +101,7 @@ fun MainDashboard(username: String, steps: Int) {
         item {
             Column(modifier = Modifier.padding(bottom = 8.dp)) {
                 Text(
-                    text = "REGISTRE D'ACTIVITÉ",
+                    text = "REGISTRE DES QUÊTES",
                     style = MaterialTheme.typography.labelMedium.copy(
                         fontWeight = FontWeight.Bold,
                         letterSpacing = 2.sp
@@ -86,7 +109,7 @@ fun MainDashboard(username: String, steps: Int) {
                     color = if (isDark) CyanElectric else LightPrimary
                 )
                 Text(
-                    text = username.uppercase(),
+                    text = "Bonjour ${username.uppercase()}",
                     style = MaterialTheme.typography.titleLarge.copy(
                         fontWeight = FontWeight.Black,
                         fontSize = 28.sp
@@ -101,13 +124,13 @@ fun MainDashboard(username: String, steps: Int) {
             SystemCard {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
-                        imageVector = Icons.Default.CheckCircle, 
-                        contentDescription = null, 
+                        imageVector = Icons.Default.DirectionsWalk,
+                        contentDescription = null,
                         tint = if (isDark) CyanElectric else LightPrimary
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        "PAS AUJOURD'HUI", 
+                        "PAS AUJOURD'HUI",
                         style = MaterialTheme.typography.labelSmall,
                         color = if (isDark) Color.Gray else Color.DarkGray
                     )
@@ -118,9 +141,9 @@ fun MainDashboard(username: String, steps: Int) {
                     style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
                     color = if (isDark) Color.White else LightTextPrimary
                 )
-                
+
                 val stepProgress = (steps.toFloat() / 10000f).coerceIn(0f, 1f)
-                
+
                 LinearProgressIndicator(
                     progress = { stepProgress },
                     modifier = Modifier.fillMaxWidth().height(6.dp).padding(top = 8.dp),
@@ -128,6 +151,26 @@ fun MainDashboard(username: String, steps: Int) {
                     trackColor = (if (isDark) Color.White else Color.Black).copy(alpha = 0.1f)
                 )
             }
+        }
+
+        // ⚔️ MISSION SUGGÉRÉE
+        item {
+            Text(
+                text = "MISSION SUGGÉRÉE",
+                style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
+                color = if (isDark) CyanElectric else LightPrimary
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            TrainingSessionCard(
+                title = "Éveil du Monarque",
+                duration = "30 min",
+                exercisesCount = 3,
+                calories = 850,
+                muscles = "Elite",
+                instructions = listOf("Shadow Boxing", "Planche Commando", "Burpees"),
+                imageRes = com.ashiro.fittrack.R.drawable.eveil_mon,
+                onStart = { onStartTraining("Éveil du Monarque") }
+            )
         }
 
         // SECTION QUÊTES
@@ -143,22 +186,22 @@ fun MainDashboard(username: String, steps: Int) {
                     color = if (isDark) CyanElectric else LightPrimary
                 )
                 IconButton(
-                    onClick = { 
+                    onClick = {
                         isAddingQuest = !isAddingQuest
-                        if (!isAddingQuest) newQuestTitle = "" 
+                        if (!isAddingQuest) newQuestTitle = ""
                     },
                     modifier = Modifier
                         .size(32.dp)
                         .rotate(rotationAngle)
                         .background(
-                            (if (isAddingQuest) Color.Red else (if (isDark) CyanElectric else LightPrimary)).copy(alpha = 0.15f), 
+                            (if (isAddingQuest) Color.Red else (if (isDark) CyanElectric else LightPrimary)).copy(alpha = 0.15f),
                             CircleShape
                         )
                 ) {
                     Icon(
-                        imageVector = Icons.Default.Add, 
-                        contentDescription = if (isAddingQuest) "Annuler" else "Nouvelle Mission", 
-                        tint = if (isAddingQuest) Color.Red else (if (isDark) CyanElectric else LightPrimary), 
+                        imageVector = Icons.Default.Add,
+                        contentDescription = if (isAddingQuest) "Annuler" else "Nouvelle Mission",
+                        tint = if (isAddingQuest) Color.Red else (if (isDark) CyanElectric else LightPrimary),
                         modifier = Modifier.size(20.dp)
                     )
                 }
@@ -245,7 +288,7 @@ fun MainDashboard(username: String, steps: Int) {
 @Composable
 fun QuestItem(quest: HunterQuest, isDark: Boolean, onToggle: () -> Unit) {
     var isVisible by remember { mutableStateOf(true) }
-    
+
     AnimatedVisibility(
         visible = isVisible,
         exit = slideOutHorizontally(targetOffsetX = { -it }) + fadeOut(),
@@ -288,3 +331,10 @@ fun QuestItem(quest: HunterQuest, isDark: Boolean, onToggle: () -> Unit) {
         }
     }
 }
+
+private fun getInitialQuests(): List<HunterQuest> = listOf(
+    HunterQuest(title = "Hydratation (1L/2L)"),
+    HunterQuest(title = "Étirements matinaux"),
+    HunterQuest(title = "Méditation (10min/30min)"),
+    HunterQuest(title = "Aérobic (10min/30min)")
+)

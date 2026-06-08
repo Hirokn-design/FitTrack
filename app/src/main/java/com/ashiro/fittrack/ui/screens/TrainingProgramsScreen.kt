@@ -51,31 +51,31 @@ fun TrainingProgramsScreen(onStartTraining: (String) -> Unit) {
         WorkoutCategory(
             name = "MUSCULATION & RENFORCEMENT",
             programs = listOf(
-                WorkoutProgram("Haut du Corps Sculpté", "45 min", 12, 450, "Pec/Dos/Bras", listOf("Pompes de rang S", "Tractions de l'ombre", "Développé militaire"), R.drawable.sculpt),
-                WorkoutProgram("Puissance Bas du Corps", "40 min", 10, 500, "Jambes/Fessiers", listOf("Squats explosifs", "Fentes marchées", "Soulevé de terre"), R.drawable.bas),
-                WorkoutProgram("Gainage & Force Abdominale", "20 min", 8, 200, "Abdos/Lombaires", listOf("Planche de Mana", "Crunchs", "Russian Twist"), R.drawable.gen)
+                WorkoutProgram("Haut du Corps Sculpté", "5 min", 3, 450, "Pec/Dos/Bras", listOf("Push-ups", "Dips en appui", "Jump Rope"), R.drawable.sculpt),
+                WorkoutProgram("Puissance Bas du Corps", "3 min", 3, 500, "Jambes/Fessiers", listOf("Squats explosifs", "Fentes marchées", "Chaise Invisible"), R.drawable.bas),
+                WorkoutProgram("Gainage & Force Abdominale", "5 min", 3, 200, "Abdos/Lombaires", listOf("Planche rotative", "Crunchs abdominaux", "Twist russe"), R.drawable.gen)
             )
         ),
         WorkoutCategory(
             name = "CARDIO & HAUTE INTENSITÉ",
             programs = listOf(
-                WorkoutProgram("HIIT Explosif", "30 min", 15, 600, "Full Body", listOf("Burpees", "Jumping Jacks", "Mountain Climbers"), R.drawable.burn),
-                WorkoutProgram("Brûle-Graisses Express", "45 min", 12, 700, "Endurance", listOf("Course fractionnée", "Corde à sauter"), R.drawable.e_rank)
+                WorkoutProgram("HIIT Explosif", "5 min", 3, 600, "Full Body", listOf("Burpees", "Jumping Jacks", "Étirement latéral"), R.drawable.burn),
+                WorkoutProgram("Brûle-Graisses Express", "5 min", 3, 700, "Endurance", listOf("Corde à Sauter", "Jumping Jacks", "Twist russe"), R.drawable.e_rank)
             )
         ),
         WorkoutCategory(
             name = "BIEN-ÊTRE & RÉCUPÉRATION",
             programs = listOf(
-                WorkoutProgram("Réveil Musculaire Doux", "15 min", 6, 100, "Mobilité", listOf("Rotations articulaires", "Étirements légers"), R.drawable.pos),
-                WorkoutProgram("Mobilité & Flexibilité", "20 min", 10, 120, "Articulations", listOf("Ouverture hanches", "Mobilité épaules"), R.drawable.mobility),
-                WorkoutProgram("Stretching Profond", "25 min", 8, 80, "Récupération", listOf("Étirements statiques", "Respiration"), R.drawable.stre)
+                WorkoutProgram("Réveil Musculaire Doux", "8 min", 3, 100, "Mobilité", listOf("Squats", "Ouverture de hanche", "Split jump"), R.drawable.pos),
+                WorkoutProgram("Mobilité & Flexibilité", "10 min", 4, 120, "Articulations", listOf("Split jump", "Ouverture hanches", "Jumping Jacks", "Split jump"), R.drawable.mobility),
+                WorkoutProgram("Stretching Profond", "3 min", 2, 80, "Récupération", listOf("Étirements Ischios", "Flexion Avant"), R.drawable.stre)
             )
         ),
         WorkoutCategory(
             name = "RAIDS SPÉCIAUX",
             programs = listOf(
-                WorkoutProgram("Agilité & Vitesse", "15 min", 10, 300, "Agilité", listOf("Sprints", "Shadow Boxing"), R.drawable.speed2),
-                WorkoutProgram("Éveil du Monarque", "30 min", 20, 850, "Elite", listOf("Entraînement combiné Rang S"), R.drawable.eveil_mon)
+                WorkoutProgram("Agilité & Vitesse", "15 min", 4, 300, "Agilité", listOf("Sprints", "Corde à Sauter", "Twist russe", "Petit Saut"), R.drawable.speed2),
+                WorkoutProgram("Éveil du Monarque", "20 min", 4, 1850, "Elite", listOf("Entraînement combiné Rang S"), R.drawable.eveil_mon)
             )
         )
     )
@@ -87,7 +87,7 @@ fun TrainingProgramsScreen(onStartTraining: (String) -> Unit) {
         item {
             Column(modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)) {
                 Text(
-                    text = "REGISTRE DES DONJONS",
+                    text = "REGISTRE DES ACTIVITÉS",
                     style = MaterialTheme.typography.labelMedium.copy(letterSpacing = 2.sp),
                     color = if (isDark) CyanElectric else LightPrimary
                 )

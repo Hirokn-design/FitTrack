@@ -5,83 +5,99 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.blur
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.airbnb.lottie.compose.*
 import com.ashiro.fittrack.ui.theme.CyanElectric
+import com.ashiro.fittrack.ui.theme.SystemBackground
 import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(onTimeout: () -> Unit) {
-    // 1. Animation de fondu pour l'apparition initiale
     val alphaAnim = remember { Animatable(0f) }
+    val scaleAnim = remember { Animatable(0.7f) }
 
-    // 2. Animation de pulsation pour l'effet "Glow"
-    val infiniteTransition = rememberInfiniteTransition(label = "glow")
-    val glowScale by infiniteTransition.animateFloat(
-        initialValue = 0.8f,
-        targetValue = 1.2f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(1500, easing = FastOutSlowInEasing),
-            repeatMode = RepeatMode.Reverse
-        ),
-        label = "glowScale"
+    val lottieComposition by rememberLottieComposition(
+        spec = LottieCompositionSpec.RawRes(R.raw.system_loader)
+    )
+    val lottieProgress by animateLottieCompositionAsState(
+        composition = lottieComposition,
+        iterations = LottieConstants.IterateForever
     )
 
-    LaunchedEffect(key1 = true) {
-        // Anime l'opacité de 0% à 100% en 1 seconde
-        alphaAnim.animateTo(
-            targetValue = 1f,
-            animationSpec = tween(durationMillis = 1000)
-        )
-        delay(2000) // Laisse le logo visible
-        onTimeout()  // Signale la fin
+    LaunchedEffect(Unit) {
+        alphaAnim.animateTo(1f, animationSpec = tween(1000))
+        scaleAnim.animateTo(1f, animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy))
+        delay(3500)
+        onTimeout()
     }
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF0B0F19)),
-        contentAlignment = Alignment.Center
+            .background(SystemBackground)
     ) {
-        // LOGO OCCUPANT TOUT L'ÉCRAN
+        // Arrière-plan
         Image(
-            painter = painterResource(id = R.drawable.logo_fittrack), 
-            contentDescription = "FitTrack Logo",
+            painter = painterResource(id = R.drawable.bg_init),
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize().alpha(0.1f),
+            contentScale = ContentScale.Crop
+        )
+
+        // 1. ZONE LOGO (Haut de l'écran - Agrandi x1.5)
+        Column(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
+                .padding(top = 60.dp) // Remonté pour compenser la grande taille
+                .scale(scaleAnim.value)
                 .alpha(alphaAnim.value),
-            contentScale = ContentScale.Crop // Remplit tout l'écran
-        )
-
-        // EFFET DE HALO (Glow) diffus par-dessus pour l'ambiance "Système"
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .alpha(alphaAnim.value * 0.3f * glowScale)
-                .blur(50.dp)
-                .background(CyanElectric.copy(alpha = 0.4f))
-        )
-
-        // ICONE DE CHARGEMENT RONDE EN BAS AU MILIEU
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(bottom = 64.dp),
-            contentAlignment = Alignment.BottomCenter
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            CircularProgressIndicator(
-                modifier = Modifier.size(44.dp),
-                color = CyanElectric,
-                strokeWidth = 3.dp,
-                trackColor = CyanElectric.copy(alpha = 0.1f)
+            Image(
+                painter = painterResource(id = R.drawable.logo_fittrack),
+                contentDescription = "Logo",
+                modifier = Modifier.size(360.dp) // 240dp * 1.5 = 360dp
+            )
+        }
+
+        // 2. ZONE DE CHARGEMENT (Bas de l'écran)
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.BottomCenter)
+                .padding(bottom = 60.dp), // Remonté légèrement pour laisser plus de place
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            LottieAnimation(
+                composition = lottieComposition,
+                progress = { lottieProgress },
+                // Augmentation de la taille ici
+                modifier = Modifier.size(180.dp)
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Text(
+                text = "INITIALISATION DU SYSTÈME",
+                style = MaterialTheme.typography.labelSmall.copy(
+                    fontWeight = FontWeight.Black,
+                    letterSpacing = 5.sp
+                ),
+                color = CyanElectric
             )
         }
     }

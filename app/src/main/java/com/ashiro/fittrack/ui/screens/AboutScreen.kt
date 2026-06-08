@@ -5,7 +5,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Info
@@ -14,13 +13,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ashiro.fittrack.ui.components.SystemCard
-import com.ashiro.fittrack.ui.theme.CyanElectric
 
 @Composable
 fun AboutScreen(onBack: () -> Unit) {
@@ -31,7 +28,7 @@ fun AboutScreen(onBack: () -> Unit) {
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // HEADER
+            // HEADER : TITRE DU SYSTÈME AVEC BOUTON RETOUR
             item {
                 Row(
                     modifier = Modifier.fillMaxWidth().statusBarsPadding(),
@@ -41,69 +38,73 @@ fun AboutScreen(onBack: () -> Unit) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Retour",
-                            tint = Color.White
+                            tint = MaterialTheme.colorScheme.onBackground
                         )
                     }
                     Spacer(modifier = Modifier.width(8.dp))
                     Column {
                         Text(
                             text = "À PROPOS",
-                            style = MaterialTheme.typography.headlineSmall.copy(
+                            style = MaterialTheme.typography.titleMedium.copy(
                                 fontWeight = FontWeight.ExtraBold,
                                 letterSpacing = 3.sp
                             ),
-                            color = Color.White
+                            color = MaterialTheme.colorScheme.onBackground
                         )
                         HorizontalDivider(
                             modifier = Modifier.width(80.dp).padding(top = 4.dp),
                             thickness = 2.dp,
-                            color = CyanElectric
+                            color = MaterialTheme.colorScheme.primary
                         )
                     }
                 }
             }
 
-            // APP INFO
+            // APP INFO (Reformulé Pro & Data)
             item {
                 SystemCard {
                     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
                         Icon(
-                            Icons.Default.Info,
+                            imageVector = Icons.Default.Info,
                             contentDescription = null,
-                            tint = CyanElectric,
+                            tint = MaterialTheme.colorScheme.primary,
                             modifier = Modifier.size(64.dp)
                         )
                         Spacer(modifier = Modifier.height(16.dp))
                         Text(
                             text = "FitTrack System",
-                            style = MaterialTheme.typography.titleLarge,
-                            color = Color.White
+                            style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
+                            color = MaterialTheme.colorScheme.onSurface
                         )
                         Text(
-                            text = "Version 1.0.0 (Rang S)",
-                            style = MaterialTheme.typography.labelSmall,
-                            color = CyanElectric
+                            text = "Version 1.0.0 (Production Stable)",
+                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
+                            color = MaterialTheme.colorScheme.primary
                         )
                         Spacer(modifier = Modifier.height(16.dp))
                         Text(
-                            text = "FitTrack est un système de fitness inspiré de l'esthétique Solo Leveling. " +
-                                    "Transformez votre entraînement en quête épique, suivez vos statistiques de chasseur " +
-                                    "et éveillez votre plein potentiel physique.",
+                            text = "FitTrack est une solution moderne de suivi de performance physique " +
+                                    "conçue pour centraliser et analyser vos indicateurs de santé. Grâce à une " +
+                                    "modélisation algorithmique de vos activités quotidiennes, l'application vous " +
+                                    "accompagne dans l'optimisation continue de vos objectifs de conditionnement physique.",
                             style = MaterialTheme.typography.bodyMedium,
-                            color = Color.LightGray,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
                             textAlign = TextAlign.Center
                         )
                     }
                 }
             }
 
-            // CREATOR INFO
+            // CREATOR INFO (Sérieux & Professionnel)
             item {
                 SystemCard {
                     Text(
-                        text = "LE CRÉATEUR DU SYSTÈME",
-                        style = MaterialTheme.typography.labelMedium,
-                        color = CyanElectric
+                        text = "CONCEPTEUR DU SYSTÈME",
+                        style = MaterialTheme.typography.labelMedium.copy(
+                            fontWeight = FontWeight.ExtraBold,
+                            letterSpacing = 2.sp
+                        ),
+                        color = MaterialTheme.colorScheme.primary
                     )
                     Spacer(modifier = Modifier.height(16.dp))
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -111,34 +112,40 @@ fun AboutScreen(onBack: () -> Unit) {
                             modifier = Modifier
                                 .size(60.dp)
                                 .clip(CircleShape)
-                                .background(CyanElectric.copy(alpha = 0.1f))
-                                .border(1.dp, CyanElectric, CircleShape),
+                                .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.1f))
+                                .border(1.dp, MaterialTheme.colorScheme.primary, CircleShape),
                             contentAlignment = Alignment.Center
                         ) {
-                            Text("A", color = Color.White, fontWeight = FontWeight.Bold, fontSize = 24.sp)
+                            Text(
+                                text = "A",
+                                color = MaterialTheme.colorScheme.onSurface,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 24.sp
+                            )
                         }
                         Spacer(modifier = Modifier.width(16.dp))
                         Column {
                             Text(
                                 text = "Ashiro",
-                                style = MaterialTheme.typography.titleMedium,
-                                color = Color.White
+                                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+                                color = MaterialTheme.colorScheme.onSurface
                             )
                             Text(
-                                text = "Architecte de Rang National",
+                                text = "Développeur Mobile & Analyste",
                                 style = MaterialTheme.typography.labelSmall,
-                                color = Color.Gray
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         }
                     }
                 }
             }
-            
+
+            // COPYRIGHT (Nettoyé)
             item {
                 Text(
-                    text = "© 2026 Ashiro FitTrack. Tous droits réservés au Monarque.",
+                    text = "© 2026 Ashiro FitTrack. Tous droits réservés.",
                     style = MaterialTheme.typography.labelSmall,
-                    color = Color.DarkGray,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
                     modifier = Modifier.fillMaxWidth().padding(top = 32.dp),
                     textAlign = TextAlign.Center
                 )

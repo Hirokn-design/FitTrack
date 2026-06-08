@@ -51,7 +51,7 @@ fun OnboardingScreen(onFinished: () -> Unit) {
     val scope = rememberCoroutineScope()
 
     Box(modifier = Modifier.fillMaxSize().background(SystemBackground)) {
-        // 1. CARROUSEL D'IMAGES (Défilement horizontal)
+        // 1. CARROUSEL D'IMAGES À CONTRASTE OPTIMISÉ
         HorizontalPager(
             state = pagerState,
             modifier = Modifier.fillMaxSize()
@@ -61,23 +61,49 @@ fun OnboardingScreen(onFinished: () -> Unit) {
                 contentDescription = null,
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop,
-                alpha = 0.4f
+                alpha = 0.35f // Légèrement réduit pour faire ressortir les éléments d'interface
             )
         }
 
-        // 2. BARRE DE PROGRESSION STYLISÉE (EN HAUT)
+        // 2. ÉLÉMENTS DE CONTRÔLE ET D'IMMERSION (HAUT DE L'ÉCRAN)
         Column(modifier = Modifier.fillMaxSize()) {
-            Spacer(modifier = Modifier.height(60.dp))
-            
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .statusBarsPadding()
+                    .padding(horizontal = 24.dp, vertical = 16.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                // Label de version ou d'état du Système
+                Text(
+                    text = "SYS.VER.2026_V3",
+                    style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, letterSpacing = 1.sp),
+                    color = CyanElectric.copy(alpha = 0.6f)
+                )
+
+                // Bouton "Passer" l'onboarding pour aller à l'essentiel, style Chasseur pressé
+                if (pagerState.currentPage < images.size - 1) {
+                    TextButton(onClick = onFinished) {
+                        Text(
+                            text = "PASSER",
+                            style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.ExtraBold),
+                            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f)
+                        )
+                    }
+                }
+            }
+
+            // 3. BARRE DE PROGRESSION DE SYNCHRONISATION
             val progress by animateFloatAsState(
                 targetValue = (pagerState.currentPage + 1).toFloat() / images.size,
                 label = "system_sync"
             )
-            
-            Column(modifier = Modifier.padding(horizontal = 40.dp)) {
+
+            Column(modifier = Modifier.padding(horizontal = 32.dp)) {
                 Text(
                     text = "SYNCHRONISATION DU SYSTÈME : ${(progress * 100).toInt()}%",
-                    style = MaterialTheme.typography.labelSmall,
+                    style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, letterSpacing = 1.5.sp),
                     color = CyanElectric,
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
@@ -85,8 +111,8 @@ fun OnboardingScreen(onFinished: () -> Unit) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(6.dp)
-                        .background(Color.White.copy(alpha = 0.1f), CircleShape)
-                        .border(1.dp, CyanElectric.copy(alpha = 0.2f), CircleShape)
+                        .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f), CircleShape)
+                        .border(0.5.dp, CyanElectric.copy(alpha = 0.3f), CircleShape)
                 ) {
                     Box(
                         modifier = Modifier
@@ -100,74 +126,82 @@ fun OnboardingScreen(onFinished: () -> Unit) {
                 }
             }
 
-            Spacer(modifier = Modifier.height(40.dp))
-
-            // 3. TITRE BIENVENU STYLISÉ
-            Text(
-                text = "BIENVENUE DANS\nFITTRACK",
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp),
-                textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.titleLarge.copy(
-                    fontSize = 32.sp,
-                    fontWeight = FontWeight.ExtraBold,
-                    letterSpacing = 6.sp,
-                    lineHeight = 40.sp,
-                    brush = Brush.verticalGradient(listOf(Color.White, CyanElectric))
-                )
-            )
-
             Spacer(modifier = Modifier.weight(1f))
 
-            // 4. CADRE DE L'ASSISTANT AVATAR ET TEXTES
+            // 4. CADRE D'INTERACTION DE L'ASSISTANT AVATAR (BOÎTE FLOTTANTE)
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(24.dp)
-                    .clip(RoundedCornerShape(32.dp))
-                    .background(Color.Black.copy(alpha = 0.8f))
-                    .border(1.dp, CyanElectric.copy(alpha = 0.4f), RoundedCornerShape(32.dp))
+                    .clip(RoundedCornerShape(28.dp))
+                    // Utilisation d'une couleur de surface Material3 adaptative pour supporter le mode clair
+                    .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.9f))
+                    .border(1.dp, CyanElectric.copy(alpha = 0.3f), RoundedCornerShape(28.dp))
                     .padding(24.dp)
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    // AVATAR ASSISTANT 2D (Style Hologramme)
+
+                    // AVATAR ASSISTANT (Effet Holographique Néon)
                     Box(
                         modifier = Modifier
-                            .size(100.dp)
-                            .background(ManaPurple.copy(alpha = 0.1f), CircleShape)
+                            .size(90.dp)
+                            .background(ManaPurple.copy(alpha = 0.15f), CircleShape)
                             .border(2.dp, Brush.sweepGradient(listOf(CyanElectric, ManaPurple)), CircleShape),
                         contentAlignment = Alignment.Center
                     ) {
-                        // Icône d'assistant (Avatar 2D placeholder)
                         Icon(
-                            imageVector = Icons.Default.Face, 
+                            imageVector = Icons.Default.Face,
                             contentDescription = "Assistant AI",
-                            modifier = Modifier.size(60.dp),
+                            modifier = Modifier.size(50.dp),
                             tint = CyanElectric
                         )
                     }
 
-                    Spacer(modifier = Modifier.height(20.dp))
+                    Spacer(modifier = Modifier.height(16.dp))
 
+                    // Titre de la quête / étape actuelle
                     Text(
                         text = titles[pagerState.currentPage],
-                        style = MaterialTheme.typography.titleMedium,
+                        style = MaterialTheme.typography.titleMedium.copy(
+                            fontWeight = FontWeight.ExtraBold,
+                            letterSpacing = 2.sp
+                        ),
                         color = CyanElectric,
-                        fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Center
                     )
 
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(12.dp))
 
+                    // Description textuelle
                     Text(
                         text = descriptions[pagerState.currentPage],
                         style = MaterialTheme.typography.bodyMedium,
-                        color = Color.White,
+                        color = MaterialTheme.colorScheme.onSurface,
                         textAlign = TextAlign.Center,
                         lineHeight = 22.sp
                     )
 
-                    Spacer(modifier = Modifier.height(32.dp))
+                    Spacer(modifier = Modifier.height(24.dp))
 
+                    // INDICATEURS VISUELS DE PAGES (Pills / Dots)
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        modifier = Modifier.padding(bottom = 16.dp)
+                    ) {
+                        repeat(images.size) { i ->
+                            val isSelected = pagerState.currentPage == i
+                            Box(
+                                modifier = Modifier
+                                    .size(width = if (isSelected) 18.dp else 6.dp, height = 6.dp)
+                                    .clip(CircleShape)
+                                    .background(
+                                        if (isSelected) CyanElectric else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f)
+                                    )
+                            )
+                        }
+                    }
+
+                    // BOUTON DE SÉLECTION D'ÉTAPES / ÉVEIL
                     SystemButton(
                         text = if (pagerState.currentPage == images.size - 1) "S'ÉVEILLER" else "SUIVANT",
                         onClick = {
@@ -182,7 +216,7 @@ fun OnboardingScreen(onFinished: () -> Unit) {
                     )
                 }
             }
-            Spacer(modifier = Modifier.height(40.dp))
+            Spacer(modifier = Modifier.navigationBarsPadding())
         }
     }
 }

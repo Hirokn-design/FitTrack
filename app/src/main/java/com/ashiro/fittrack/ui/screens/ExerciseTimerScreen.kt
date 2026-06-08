@@ -1,12 +1,12 @@
 package com.ashiro.fittrack.ui.screens
 
 import android.widget.Toast
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.animation.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,12 +25,18 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ashiro.fittrack.R
 import com.ashiro.fittrack.model.WorkoutDatabase
 import com.ashiro.fittrack.ui.components.SystemButton
 import com.ashiro.fittrack.ui.theme.CyanElectric
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.LottieConstants
+import com.airbnb.lottie.compose.animateLottieCompositionAsState
+import com.airbnb.lottie.compose.rememberLottieComposition
 import kotlinx.coroutines.delay
 
 @Composable
@@ -39,11 +45,30 @@ fun ExerciseTimerScreen(
     onFinish: () -> Unit
 ) {
     val context = LocalContext.current
-
-    // 1. Récupération sécurisée de l'activité
     val activity = remember(activityName) { WorkoutDatabase.allActivities[activityName] }
+    var isLoadingSystem by remember { mutableStateOf(true) }
 
-    // Si l'activité n'est pas trouvée, on affiche une alerte visuelle au lieu de laisser un écran noir infini
+    // Sélection dynamique optimisée : charge system_loading_1 à system_loading_10
+    val randomLoadingRes = remember(activityName) {
+        val randomId = (1..10).random()
+        context.resources.getIdentifier("system_loading_$randomId", "raw", context.packageName)
+    }
+
+    val loadingComposition by rememberLottieComposition(LottieCompositionSpec.RawRes(randomLoadingRes))
+    val loadingProgress by animateLottieCompositionAsState(
+        composition = loadingComposition,
+        iterations = LottieConstants.IterateForever,
+        speed = 1.3f
+    )
+
+    LaunchedEffect(activity) {
+        if (activity != null) {
+            delay(4000L) // Temps de chargement système (4s)
+            isLoadingSystem = false
+        }
+    }
+
+    // Gestion sécurité
     if (activity == null) {
         LaunchedEffect(activityName) {
             Toast.makeText(context, "Erreur Raid : '$activityName' introuvable !", Toast.LENGTH_LONG).show()
@@ -52,36 +77,41 @@ fun ExerciseTimerScreen(
         return
     }
 
-    var currentExerciseIndex by remember { mutableIntStateOf(0) }
+    // INTERFACE DE CHARGEMENT
+    if (isLoadingSystem) {
+        Box(modifier = Modifier.fillMaxSize().background(Color(0xFF0B0F19)), contentAlignment = Alignment.Center) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                if (loadingComposition != null) {
+                    LottieAnimation(loadingComposition, { loadingProgress }, modifier = Modifier.size(160.dp))
+                } else {
+                    CircularProgressIndicator(color = CyanElectric)
+                }
+                Spacer(modifier = Modifier.height(24.dp))
+                Text("INITIALISATION DU PROTOCOLE...", style = MaterialTheme.typography.labelMedium, color = CyanElectric, fontWeight = FontWeight.Bold)
+            }
+        }
+        return
+    }
 
-    // Sécurité anti-crash si la liste d'exercices est vide
-    if (activity.exercises.isEmpty() || currentExerciseIndex >= activity.exercises.size) {
+    // LOGIQUE DU TIMER
+    var currentExerciseIndex by remember { mutableIntStateOf(0) }
+    val currentExercise = activity.exercises.getOrNull(currentExerciseIndex) ?: run {
         LaunchedEffect(Unit) { onFinish() }
         return
     }
 
-    val currentExercise = activity.exercises[currentExerciseIndex]
-
-    // 2. Gestion du temps liée à l'index de l'exercice en cours
     var timeLeft by remember(currentExerciseIndex) { mutableIntStateOf(currentExercise.durationSeconds) }
     var isRunning by remember { mutableStateOf(true) }
 
-    // 3. Boucle d'effet unique et isolée pour le compte à rebours
     LaunchedEffect(currentExerciseIndex, isRunning) {
         while (isRunning && timeLeft > 0) {
             delay(1000L)
             timeLeft--
-
             if (timeLeft <= 0) {
-                if (currentExerciseIndex < activity.exercises.size - 1) {
-                    currentExerciseIndex++
-                } else {
-                    onFinish()
-                }
+                if (currentExerciseIndex < activity.exercises.size - 1) currentExerciseIndex++ else onFinish()
             }
         }
     }
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -114,6 +144,7 @@ fun ExerciseTimerScreen(
         Spacer(modifier = Modifier.height(24.dp))
 
         // ZONE D'ANIMATION DE L'EXERCICE
+        // ZONE D'ANIMATION DE L'EXERCICE (CORRIGÉE)
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -123,13 +154,33 @@ fun ExerciseTimerScreen(
                 .border(1.dp, CyanElectric.copy(alpha = 0.2f), RoundedCornerShape(24.dp)),
             contentAlignment = Alignment.Center
         ) {
-            if (currentExercise.animationRes != null) {
-                androidx.compose.foundation.Image(
-                    painter = painterResource(id = currentExercise.animationRes),
-                    contentDescription = null,
-                    modifier = Modifier.fillMaxSize().padding(16.dp),
-                    contentScale = ContentScale.Fit
-                )
+            val resId = currentExercise.animationRes
+
+            if (resId != null) {
+                val context = LocalContext.current
+                // On vérifie dynamiquement si l'ID pointe vers 'raw' ou 'drawable'
+                val isRaw = try {
+                    context.resources.getResourceTypeName(resId) == "raw"
+                } catch (e: Exception) { false }
+
+                if (isRaw) {
+                    // C'est un Lottie (R.raw.xxx)
+                    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(resId))
+                    LottieAnimation(
+                        composition = composition,
+                        iterations = LottieConstants.IterateForever,
+                        modifier = Modifier.fillMaxSize().padding(8.dp),
+                        contentScale = ContentScale.Fit
+                    )
+                } else {
+                    // C'est une image classique (R.drawable.xxx)
+                    androidx.compose.foundation.Image(
+                        painter = painterResource(id = resId),
+                        contentDescription = null,
+                        modifier = Modifier.fillMaxSize().padding(16.dp),
+                        contentScale = ContentScale.Fit
+                    )
+                }
             } else {
                 Icon(Icons.Default.FitnessCenter, contentDescription = null, tint = CyanElectric.copy(alpha = 0.3f), modifier = Modifier.size(80.dp))
             }

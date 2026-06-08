@@ -116,9 +116,9 @@ fun TrainingSessionCard(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        StatIconItem(Icons.Default.Person, duration, isDark) // Icons.Default.Timer
-                        StatIconItem(Icons.Default.Person, muscles, isDark) // Icons.Default.FitnessCenter
-                        StatIconItem(Icons.Default.Person, "${calories}kcal", isDark) // Icons.Default.Whatshot
+                        StatIconItem(Icons.Default.Timer, duration, isDark) // Icons.Default.Timer
+                        StatIconItem(Icons.Default.Accessibility, muscles, isDark) // Icons.Default.FitnessCenter
+                        StatIconItem(Icons.Default.EnergySavingsLeaf, "${calories}kcal", isDark) // Icons.Default.Whatshot
                     }
                 }
 

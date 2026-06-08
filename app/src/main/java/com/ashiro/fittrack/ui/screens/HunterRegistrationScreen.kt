@@ -25,9 +25,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ashiro.fittrack.R
 import com.ashiro.fittrack.ui.components.SystemButton
 import com.ashiro.fittrack.ui.theme.CyanElectric
 import com.ashiro.fittrack.ui.theme.ManaPurple
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.LottieConstants
+import com.airbnb.lottie.compose.animateLottieCompositionAsState
+import com.airbnb.lottie.compose.rememberLottieComposition
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.math.absoluteValue
 
@@ -37,7 +44,8 @@ fun HunterRegistrationScreen(
 ) {
     val pagerState = rememberPagerState(pageCount = { 7 })
     val scope = rememberCoroutineScope()
-    
+
+    // États du formulaire
     var name by remember { mutableStateOf("") }
     var sex by remember { mutableStateOf("M") }
     var age by remember { mutableIntStateOf(25) }
@@ -46,6 +54,75 @@ fun HunterRegistrationScreen(
     var goal by remember { mutableStateOf("Prendre du muscle") }
     var activityLevel by remember { mutableStateOf("Intermédiaire") }
 
+    // ÉTAT D'INITIALISATION ET DE SYNCHRONISATION FINALE
+    var isSyncing by remember { mutableStateOf(false) }
+
+    // Chargement de l'animation Lottie pour la création du profil
+    val syncComposition by rememberLottieComposition(
+        LottieCompositionSpec.RawRes(R.raw.system_registration_sync)
+    )
+    val syncProgress by animateLottieCompositionAsState(
+        composition = syncComposition,
+        iterations = LottieConstants.IterateForever,
+        speed = 1.2f
+    )
+
+    // Effet de temporisation de l'analyse du profil (4 secondes)
+    LaunchedEffect(isSyncing) {
+        if (isSyncing) {
+            delay(4000L) // Laisse le temps à l'animation et à la BDD de s'initialiser
+            onComplete(HunterProfile(name, sex, age, height, weight, goal, activityLevel))
+        }
+    }
+
+    // ÉCRAN DE SYNCHRONISATION DU SYSTÈME (S'affiche uniquement lors du clic final)
+    if (isSyncing) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color(0xFF0B0F19)),
+            contentAlignment = Alignment.Center
+        ) {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                if (syncComposition != null) {
+                    LottieAnimation(
+                        composition = syncComposition,
+                        progress = { syncProgress },
+                        modifier = Modifier.size(180.dp)
+                    )
+                } else {
+                    CircularProgressIndicator(color = CyanElectric, modifier = Modifier.size(44.dp))
+                }
+
+                Spacer(modifier = Modifier.height(32.dp))
+
+                Text(
+                    text = "GÉNÉRATION DE L'INTERFACE...",
+                    style = MaterialTheme.typography.titleMedium.copy(
+                        letterSpacing = 3.sp,
+                        fontWeight = FontWeight.Black
+                    ),
+                    color = CyanElectric
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Text(
+                    text = "Enregistrement des informations de l'utilisateur",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = Color.Gray,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(horizontal = 40.dp)
+                )
+            }
+        }
+        return // Coupe le rendu du formulaire d'inscription
+    }
+
+    // FORMULAIRE D'INSCRIPTION STANDARD (Horizontal Pager)
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize()) {
             // BARRE DE SYNCHRONISATION
@@ -95,8 +172,8 @@ fun HunterRegistrationScreen(
                         ) {
                             Icon(
                                 Icons.Default.Face,
-                                contentDescription = "Assistant", 
-                                tint = CyanElectric, 
+                                contentDescription = "Assistant",
+                                tint = CyanElectric,
                                 modifier = Modifier.size(40.dp)
                             )
                         }
@@ -127,32 +204,32 @@ fun HunterRegistrationScreen(
                 if (pagerState.currentPage > 0) {
                     SystemButton(
                         text = "RETOUR",
-                        onClick = { 
-                            scope.launch { 
+                        onClick = {
+                            scope.launch {
                                 pagerState.animateScrollToPage(
                                     pagerState.currentPage - 1,
                                     animationSpec = tween(500, easing = FastOutSlowInEasing)
-                                ) 
-                            } 
+                                )
+                            }
                         },
                         modifier = Modifier.weight(1f),
                         isSecondary = true
                     )
                     Spacer(modifier = Modifier.width(16.dp))
                 }
-                
+
                 SystemButton(
                     text = if (pagerState.currentPage == 6) "INITIALISER" else "SUIVANT",
                     onClick = {
                         if (pagerState.currentPage < 6) {
-                            scope.launch { 
+                            scope.launch {
                                 pagerState.animateScrollToPage(
                                     pagerState.currentPage + 1,
                                     animationSpec = tween(500, easing = FastOutSlowInEasing)
-                                ) 
+                                )
                             }
                         } else {
-                            onComplete(HunterProfile(name, sex, age, height, weight, goal, activityLevel))
+                            isSyncing = true // Déclenche le superbe écran d'analyse Lottie
                         }
                     },
                     modifier = Modifier.weight(1f),
@@ -163,6 +240,7 @@ fun HunterRegistrationScreen(
     }
 }
 
+// Les sous-composants existants restent inchangés
 @Composable
 fun NameStep(name: String, onNameChange: (String) -> Unit) {
     StepLayout(title = "IDENTIFIANT", subtitle = "Enregistrez votre pseudo") {
@@ -185,18 +263,17 @@ fun NameStep(name: String, onNameChange: (String) -> Unit) {
 fun SexStep(selectedSex: String, onSexSelect: (String) -> Unit) {
     StepLayout(title = "PROFIL BIOLOGIQUE", subtitle = "Choisissez votre sexe") {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            // Utilisation d'icônes standard pour éviter les erreurs "Unresolved reference"
             SexCircleButton(
-                label = "MÂLE", 
+                label = "MÂLE",
                 icon = Icons.Default.Male,
-                isSelected = selectedSex == "M", 
+                isSelected = selectedSex == "M",
                 onClick = { onSexSelect("M") }
             )
             Spacer(modifier = Modifier.height(32.dp))
             SexCircleButton(
-                label = "FEMELLE", 
+                label = "FEMELLE",
                 icon = Icons.Default.Female,
-                isSelected = selectedSex == "F", 
+                isSelected = selectedSex == "F",
                 onClick = { onSexSelect("F") }
             )
         }
@@ -262,23 +339,23 @@ fun SexCircleButton(label: String, icon: ImageVector, isSelected: Boolean, onCli
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.clickable { onClick() }) {
         Box(
             modifier = Modifier
-                .size(120.dp) // Bouton plus gros
+                .size(120.dp)
                 .clip(CircleShape)
                 .background(if (isSelected) ManaPurple.copy(alpha = 0.4f) else Color.White.copy(alpha = 0.05f))
                 .border(2.dp, if (isSelected) CyanElectric else Color.Transparent, CircleShape),
             contentAlignment = Alignment.Center
         ) {
             Icon(
-                icon, 
-                contentDescription = null, 
-                tint = if (isSelected) Color.White else Color.Gray, 
+                icon,
+                contentDescription = null,
+                tint = if (isSelected) Color.White else Color.Gray,
                 modifier = Modifier.size(54.dp)
             )
         }
         Text(
-            label, 
-            style = MaterialTheme.typography.labelMedium, 
-            color = if (isSelected) CyanElectric else Color.Gray, 
+            label,
+            style = MaterialTheme.typography.labelMedium,
+            color = if (isSelected) CyanElectric else Color.Gray,
             modifier = Modifier.padding(top = 8.dp)
         )
     }
@@ -309,7 +386,7 @@ fun WheelPicker(
     val itemHeight = 60.dp
     val rangeList = range.toList()
     val initialPage = rangeList.indexOf(selectedValue).coerceAtLeast(0)
-    
+
     val pagerState = rememberPagerState(
         initialPage = initialPage,
         pageCount = { rangeList.size }
@@ -332,7 +409,7 @@ fun WheelPicker(
                 .border(1.dp, CyanElectric.copy(alpha = 0.5f), RoundedCornerShape(8.dp))
                 .background(CyanElectric.copy(alpha = 0.05f))
         )
-        
+
         VerticalPager(
             state = pagerState,
             modifier = Modifier.fillMaxSize(),
@@ -340,10 +417,10 @@ fun WheelPicker(
         ) { page ->
             val value = rangeList[page]
             val isSelected = page == pagerState.currentPage
-            
+
             val pageOffset = (
-                (pagerState.currentPage - page) + pagerState.currentPageOffsetFraction
-            ).absoluteValue
+                    (pagerState.currentPage - page) + pagerState.currentPageOffsetFraction
+                    ).absoluteValue
 
             val scale = 1.2f - (pageOffset.coerceIn(0f, 1f) * 0.3f)
             val alpha = 1f - (pageOffset.coerceIn(0f, 1f) * 0.7f)

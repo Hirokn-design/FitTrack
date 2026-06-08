@@ -1,5 +1,9 @@
 package com.ashiro.fittrack
 
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.animation.core.tween
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
@@ -72,9 +76,10 @@ class MainActivity : ComponentActivity(), SensorEventListener {
 
         setContent {
             var themeMode by remember {
-                sharedPreferences.getString("THEME_MODE", "System")?.let { mutableStateOf(it) } ?: mutableStateOf("System")
+                mutableStateOf(sharedPreferences.getString("THEME_MODE", "System") ?: "System")
             }
 
+            // Gestion dynamique du mode d'affichage selon les préférences ou l'état système Android
             val isDark = when (themeMode) {
                 "Dark" -> true
                 "Light" -> false
@@ -85,8 +90,12 @@ class MainActivity : ComponentActivity(), SensorEventListener {
                 mutableStateOf(sharedPreferences.getString("CUSTOM_BG_PATH", null))
             }
 
+            // 🔄 Versionneur d'état du fond d'écran pour forcer le rafraîchissement de BitmapFactory
+            var bgVersion by remember { mutableStateOf(0) }
+
+            // Re-calculer le painter uniquement lorsque le chemin OU la version change
             val backgroundPainter: Painter = if (customBgPath != null) {
-                val bitmap = remember(customBgPath) {
+                val bitmap = remember(customBgPath, bgVersion) { // 🔥 Observe la version ici
                     try {
                         val file = File(customBgPath!!)
                         if (file.exists()) {
@@ -107,12 +116,14 @@ class MainActivity : ComponentActivity(), SensorEventListener {
                     if (path != null) {
                         customBgPath = path
                         sharedPreferences.edit { putString("CUSTOM_BG_PATH", path) }
+                        bgVersion++ // 🔄 Force le bloc "remember" ci-dessus à recalculer le Bitmap avec le nouveau fichier
                     }
                 }
             }
 
+            // Application globale de ton thème mis à jour
             FitTrackTheme(darkTheme = isDark) {
-                // Permissions
+                // Gestion des permissions Système (Podomètre et Notifications)
                 val permissionsToRequest = remember {
                     val list = mutableListOf<String>()
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) list.add(Manifest.permission.ACTIVITY_RECOGNITION)
@@ -130,10 +141,10 @@ class MainActivity : ComponentActivity(), SensorEventListener {
                 var savedSex by remember { mutableStateOf(sharedPreferences.getString("SEX", "M")) }
                 var selectedTab by remember { mutableIntStateOf(0) }
 
-                // Sauvegarde de l'état encodé de manière sécurisée pour éviter les conflits d'accents/caractères spéciaux
+                // Sauvegarde de l'état encodé pour la navigation vers l'exercice
                 var activeExerciseEncoded by remember { mutableStateOf<String?>(null) }
 
-                // Navigation d'écran plein écran
+                // Gestion des fenêtres d'interfaces superposées
                 var isProfileVisible by remember { mutableStateOf(false) }
                 var isAboutVisible by remember { mutableStateOf(false) }
                 var showSettingsDialog by remember { mutableStateOf(false) }
@@ -143,7 +154,7 @@ class MainActivity : ComponentActivity(), SensorEventListener {
                     if (!isSplashFinished) {
                         SplashScreen(onTimeout = { isSplashFinished = true })
                     } else {
-                        // FOND UNIVERSEL DYNAMIQUE
+                        // GESTION ET ADAPTATION DU FOND UNIVERSEL DYNAMIQUE
                         val currentBg: Painter = if (customBgPath != null) backgroundPainter else {
                             val resId = when {
                                 savedName == null -> R.drawable.bg_init
@@ -158,7 +169,10 @@ class MainActivity : ComponentActivity(), SensorEventListener {
                             contentDescription = null,
                             modifier = Modifier.fillMaxSize(),
                             contentScale = ContentScale.Crop,
-                            colorFilter = ColorFilter.tint(Color.Black.copy(alpha = 0.35f), androidx.compose.ui.graphics.BlendMode.Darken)
+                            colorFilter = ColorFilter.tint(
+                                color = if (isDark) Color.Black.copy(alpha = 0.35f) else Color.White.copy(alpha = 0.15f),
+                                blendMode = if (isDark) androidx.compose.ui.graphics.BlendMode.Darken else androidx.compose.ui.graphics.BlendMode.Lighten
+                            )
                         )
 
                         when {
@@ -175,6 +189,7 @@ class MainActivity : ComponentActivity(), SensorEventListener {
                                 ProfileScreen(onBack = { isProfileVisible = false })
                             }
                             savedName == null -> {
+                                // Formulaire d'inscription couplé à notre animation finale de synchronisation
                                 HunterRegistrationScreen(onComplete = { profile ->
                                     sharedPreferences.edit {
                                         putString("USERNAME", profile.name)
@@ -189,7 +204,7 @@ class MainActivity : ComponentActivity(), SensorEventListener {
                                     savedName = profile.name
                                 })
                             }
-                            // CORRECTION DE L'AFFICHAGE : Décodage propre avant injection dans le minuteur d'exercice
+                            // Décodage et lancement du minuteur d'entraînement
                             activeExerciseEncoded != null -> {
                                 val decodedActivityName = remember(activeExerciseEncoded) {
                                     try {
@@ -208,26 +223,59 @@ class MainActivity : ComponentActivity(), SensorEventListener {
                                     containerColor = Color.Transparent,
                                     topBar = {
                                         CenterAlignedTopAppBar(
-                                            title = { Text("INTERFACE SYSTEME", style = MaterialTheme.typography.labelMedium.copy(letterSpacing = 2.sp), color = CyanElectric) },
+                                            title = {
+                                                Text(
+                                                    text = "INTERFACE SYSTÈME",
+                                                    style = MaterialTheme.typography.titleMedium.copy(
+                                                        fontWeight = FontWeight.ExtraBold,
+                                                        letterSpacing = 3.sp,
+                                                        fontStyle = FontStyle.Normal
+                                                    ),
+                                                    color = MaterialTheme.colorScheme.primary
+                                                )
+                                            },
                                             actions = {
                                                 Box {
-                                                    IconButton(onClick = { showMenu = true }) { Icon(Icons.Default.MoreVert, contentDescription = "Menu", tint = Color.White) }
-                                                    DropdownMenu(expanded = showMenu, onDismissRequest = { showMenu = false }, modifier = Modifier.background(SystemBackground.copy(alpha = 0.95f))) {
-                                                        DropdownMenuItem(text = { Text("MON PROFIL", color = Color.White) }, onClick = { showMenu = false; isProfileVisible = true }, leadingIcon = { Icon(Icons.Default.Person, contentDescription = null, tint = CyanElectric) })
-                                                        DropdownMenuItem(text = { Text("PARAMÈTRES", color = Color.White) }, onClick = { showMenu = false; showSettingsDialog = true }, leadingIcon = { Icon(Icons.Default.Settings, contentDescription = null, tint = CyanElectric) })
-                                                        DropdownMenuItem(text = { Text("À PROPOS", color = Color.White) }, onClick = { showMenu = false; isAboutVisible = true }, leadingIcon = { Icon(Icons.Default.Info, contentDescription = null, tint = CyanElectric) })
+                                                    IconButton(onClick = { showMenu = true }) {
+                                                        Icon(Icons.Default.MoreVert, contentDescription = "Menu", tint = MaterialTheme.colorScheme.onBackground)
+                                                    }
+                                                    DropdownMenu(
+                                                        expanded = showMenu,
+                                                        onDismissRequest = { showMenu = false },
+                                                        modifier = Modifier.background(MaterialTheme.colorScheme.surface.copy(alpha = 0.95f))
+                                                    ) {
+                                                        DropdownMenuItem(
+                                                            text = { Text("MON PROFIL", color = MaterialTheme.colorScheme.onSurface) },
+                                                            onClick = { showMenu = false; isProfileVisible = true },
+                                                            leadingIcon = { Icon(Icons.Default.Person, contentDescription = null, tint = MaterialTheme.colorScheme.primary) }
+                                                        )
+                                                        DropdownMenuItem(
+                                                            text = { Text("PARAMÈTRES", color = MaterialTheme.colorScheme.onSurface) },
+                                                            onClick = { showMenu = false; showSettingsDialog = true },
+                                                            leadingIcon = { Icon(Icons.Default.Settings, contentDescription = null, tint = MaterialTheme.colorScheme.primary) }
+                                                        )
+                                                        DropdownMenuItem(
+                                                            text = { Text("À PROPOS", color = MaterialTheme.colorScheme.onSurface) },
+                                                            onClick = { showMenu = false; isAboutVisible = true },
+                                                            leadingIcon = { Icon(Icons.Default.Info, contentDescription = null, tint = MaterialTheme.colorScheme.primary) }
+                                                        )
                                                     }
                                                 }
                                             },
-                                            colors = TopAppBarDefaults.centerAlignedTopAppBarColors(containerColor = Color.Black.copy(alpha = 0.4f))
+                                            colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                                                containerColor = MaterialTheme.colorScheme.background.copy(alpha = 0.4f)
+                                            )
                                         )
                                     },
                                     bottomBar = { SystemBottomNavigation(selectedTab = selectedTab, onTabSelected = { selectedTab = it }) }
                                 ) { innerPadding ->
                                     Box(modifier = Modifier.fillMaxSize().padding(innerPadding)) {
                                         when (selectedTab) {
-                                            0 -> MainDashboard(savedName!!, _totalSteps.intValue)
-                                            // CORRECTION DE L'ACTION : Encodage sécurisé en UTF-8 pour éliminer le bug d'affichage
+                                            0 -> MainDashboard(savedName!!, _totalSteps.intValue, onStartTraining = { rawTitle ->
+                                                activeExerciseEncoded = try {
+                                                    URLEncoder.encode(rawTitle, "UTF-8")
+                                                } catch (e: Exception) { rawTitle }
+                                            })
                                             1 -> TrainingProgramsScreen(onStartTraining = { rawTitle ->
                                                 activeExerciseEncoded = try {
                                                     URLEncoder.encode(rawTitle, "UTF-8")
@@ -240,7 +288,10 @@ class MainActivity : ComponentActivity(), SensorEventListener {
                                 }
                                 if (showSettingsDialog) SettingsDialog(
                                     currentTheme = themeMode,
-                                    onThemeChange = { themeMode = it; sharedPreferences.edit { putString("THEME_MODE", it) } },
+                                    onThemeChange = { mode ->
+                                        themeMode = mode
+                                        sharedPreferences.edit { putString("THEME_MODE", mode) }
+                                    },
                                     onBackgroundChange = { imagePickerLauncher.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)) },
                                     onResetBackground = { customBgPath = null; sharedPreferences.edit { remove("CUSTOM_BG_PATH") } },
                                     hasCustomBg = customBgPath != null,
@@ -285,48 +336,118 @@ class MainActivity : ComponentActivity(), SensorEventListener {
 fun SettingsDialog(currentTheme: String, onThemeChange: (String) -> Unit, onBackgroundChange: () -> Unit, onResetBackground: () -> Unit, hasCustomBg: Boolean, onDismiss: () -> Unit) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        confirmButton = { TextButton(onClick = onDismiss) { Text("FERMER", color = CyanElectric) } },
-        containerColor = SystemBackground.copy(alpha = 0.95f),
-        title = { Text("PARAMÈTRES", style = MaterialTheme.typography.titleMedium.copy(letterSpacing = 2.sp), color = CyanElectric) },
+        confirmButton = { TextButton(onClick = onDismiss) { Text("FERMER", color = MaterialTheme.colorScheme.primary) } },
+        containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.95f),
+        title = { Text("PARAMÈTRES", style = MaterialTheme.typography.titleMedium.copy(letterSpacing = 2.sp), color = MaterialTheme.colorScheme.primary) },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
                 Text("AFFICHAGE", style = MaterialTheme.typography.labelSmall, color = Color.Gray)
                 listOf("System" to "Système", "Light" to "Clair", "Dark" to "Sombre").forEach { (mode, label) ->
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        RadioButton(selected = currentTheme == mode, onClick = { onThemeChange(mode) }, colors = RadioButtonDefaults.colors(selectedColor = CyanElectric))
-                        Text(label, color = Color.White, modifier = Modifier.clickable { onThemeChange(mode) })
+                        RadioButton(
+                            selected = currentTheme == mode,
+                            onClick = { onThemeChange(mode) },
+                            colors = RadioButtonDefaults.colors(selectedColor = MaterialTheme.colorScheme.primary)
+                        )
+                        Text(label, color = MaterialTheme.colorScheme.onSurface, modifier = Modifier.clickable { onThemeChange(mode) })
                     }
                 }
                 HorizontalDivider(color = Color.Gray.copy(alpha = 0.3f))
                 Text("ARRIÈRE-PLAN", style = MaterialTheme.typography.labelSmall, color = Color.Gray)
-                Button(onClick = onBackgroundChange, modifier = Modifier.fillMaxWidth(), colors = ButtonDefaults.buttonColors(containerColor = CyanElectric.copy(alpha = 0.2f), contentColor = CyanElectric), shape = RoundedCornerShape(8.dp)) {
-                    Icon(Icons.Default.Face, contentDescription = null, modifier = Modifier.size(18.dp))
+                Button(
+                    onClick = onBackgroundChange,
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.2f),
+                        contentColor = MaterialTheme.colorScheme.primary
+                    ),
+                    shape = RoundedCornerShape(8.dp)
+                ) {
+                    Icon(Icons.Default.Image, contentDescription = null, modifier = Modifier.size(18.dp))
                     Spacer(Modifier.width(8.dp))
                     Text("CHANGER L'IMAGE")
                 }
                 if (hasCustomBg) {
-                    TextButton(onClick = onResetBackground, modifier = Modifier.fillMaxWidth()) { Text("RÉINITIALISER", color = Color.Red.copy(alpha = 0.7f), fontSize = 10.sp) }
+                    TextButton(onClick = onResetBackground, modifier = Modifier.fillMaxWidth()) {
+                        Text("RÉINITIALISER", color = Color.Red.copy(alpha = 0.7f), fontSize = 10.sp)
+                    }
                 }
             }
         },
-        modifier = Modifier.border(1.dp, CyanElectric.copy(alpha = 0.5f), RoundedCornerShape(28.dp))
+        modifier = Modifier.border(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.5f), RoundedCornerShape(28.dp))
     )
 }
 
 @Composable
 fun SystemBottomNavigation(selectedTab: Int, onTabSelected: (Int) -> Unit) {
-    val items = listOf("Quête" to Icons.Default.CheckCircle, "Activiés" to Icons.AutoMirrored.Filled.List, "Évolution" to Icons.Default.Star, "Repas" to Icons.Default.Fastfood)
     val menuShape = RoundedCornerShape(32.dp)
-    Box(modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 32.dp).fillMaxWidth().clip(menuShape).background(SystemBackground.copy(alpha = 0.85f)).border(1.dp, CyanElectric.copy(alpha = 0.4f), menuShape)) {
-        NavigationBar(containerColor = Color.Transparent, modifier = Modifier.height(72.dp), windowInsets = WindowInsets(0.dp, 0.dp, 0.dp, 0.dp), tonalElevation = 0.dp) {
-            items.forEachIndexed { index, (label, icon) ->
-                NavigationBarItem(
-                    selected = selectedTab == index,
-                    onClick = { onTabSelected(index) },
-                    icon = { Icon(icon, contentDescription = label) },
-                    label = { Text(label, style = MaterialTheme.typography.labelSmall) },
-                    colors = NavigationBarItemDefaults.colors(selectedIconColor = CyanElectric, selectedTextColor = CyanElectric, unselectedIconColor = Color.Gray, unselectedTextColor = Color.Gray, indicatorColor = CyanElectric.copy(alpha = 0.2f))
+
+    val navigationItems = listOf(
+        Triple("Quête", Icons.Default.CheckCircle, 0),
+        Triple("Activités", Icons.AutoMirrored.Filled.List, 1),
+        Triple("Évolution", Icons.Default.Star, 2),
+        Triple("Repas", Icons.Default.Fastfood, 3)
+    )
+
+    Box(
+        modifier = Modifier
+            .padding(start = 16.dp, end = 16.dp, bottom = 32.dp)
+            .fillMaxWidth()
+            .height(72.dp)
+            .clip(menuShape)
+            .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.85f))
+            .border(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.4f), menuShape),
+        contentAlignment = Alignment.Center
+    ) {
+        Row(
+            modifier = Modifier.fillMaxSize(),
+            horizontalArrangement = Arrangement.SpaceAround,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            navigationItems.forEach { (label, icon, index) ->
+                val isSelected = selectedTab == index
+
+                val contentColor by animateColorAsState(
+                    targetValue = if (isSelected) MaterialTheme.colorScheme.primary else Color.Gray,
+                    animationSpec = tween(durationMillis = 300)
                 )
+
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxHeight()
+                        .clickable { onTabSelected(index) }
+                        .padding(vertical = 8.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(40.dp)
+                            .clip(RoundedCornerShape(12.dp))
+                            .background(if (isSelected) MaterialTheme.colorScheme.primary.copy(alpha = 0.15f) else Color.Transparent),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            imageVector = icon,
+                            contentDescription = label,
+                            tint = contentColor,
+                            modifier = Modifier.size(26.dp)
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(4.dp))
+
+                    Text(
+                        text = label.uppercase(),
+                        style = MaterialTheme.typography.labelSmall.copy(
+                            fontSize = 10.sp,
+                            fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
+                            letterSpacing = 1.sp
+                        ),
+                        color = contentColor
+                    )
+                }
             }
         }
     }
